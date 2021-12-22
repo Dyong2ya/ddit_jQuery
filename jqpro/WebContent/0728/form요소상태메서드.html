@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+	$('#btn1').on('click', function() {
+		//각 요소들의 현재 상태값을 가져온다
+		chk1 = $('#checkTest').prop('checked');
+		chk2 = $('#checkTest').attr('checked');
+		console.log(chk1, chk2);
+		
+		sel = $('#selTest option').eq(2).prop('selected');
+		console.log(sel);
+		
+		txt = $('#txtTest').prop('readonly');
+		console.log(txt);
+		
+		dis = $('#runBtn').prop('disabled');
+		console.log(dis);
+		
+		
+		/*if(chk1 == true){
+			$('#checkTest').prop('checked', false);
+		}else{
+			$('#checkTest').attr('checked', true);
+		}*/
+		$('#checkTest').prop('checked', !chk1);
+		
+		$('#selTest option').eq(2).prop('selected', !sel);
+		
+		$('#txtTest').prop('readonly', !txt);
+		
+		$('#runBtn').prop('disabled', !dis);
+	})
+
+	$('#all').on('change', function() {
+		//1. 현재 요소의 상태값(checked)을 가져온다
+		 chall = $(this).prop('checked');
+		
+		//2. class=chk인 요소에 1번의 값으로 checked상태를 설정한다.
+		$('.chk').prop('checked', chall);
+	})
+
+})
+
+</script>
+</head>
+<body>
+<div class="box">  
+      각 요소들의 현재 상태값을 가져옴 <br>
+   checked, selected, readonly, disabled, multiple <br>
+   prop('checked')
+      각 요소들의 상태값을 변경 <br>
+   prop('checked' true)  prop('readonly' false)<br><br>
+   <input type="button" value="확인" id="btn1">
+   <br><br>
+   <div id="result1"> 
+       <form>
+              체크박스(라디오버튼) : <input type="checkbox" id="checkTest"  checked><br><br>
+            
+              리스트박스(select객체) : 
+       		<select id="selTest">
+                 <option value="1">하나</option> 
+                 <option value="2">둘</option>
+                 <option value="3" selected >셋</option>  
+                 <option value="4">넷</option>
+             </select><br><br>
+             
+       text객체   (readonly) : <input type="text" value="가나다" id="txtTest"><br><br>
+       
+       button객체(disabled) : <input type="button" value="실행" id="runBtn" onclick="alert('Hello')">
+       </form>
+    </div>
+</div>
+
+<div class="box">  
+   <div id="result2"> 
+   	  <input type="checkbox" id="all" value="전체선택">전체선택
+   	  <input type="checkbox" class="chk" value="1">1
+   	  <input type="checkbox" class="chk" value="2">2
+   	  <input type="checkbox" class="chk" value="3">3
+   	  <input type="checkbox" class="chk" value="4">4
+   	  <input type="checkbox" class="chk" value="5">5
+   </div>
+</div>
+</body>
+</html>

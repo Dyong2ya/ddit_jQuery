@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+.box span {
+  border : 1px solid blue;
+  padding : 10px;
+  display : block; /*span태그는 인라인 요소라서 block을 줘야 가로길이 지정이 가능해 줄 안 바꾸고 싶으면 inline-block*/
+  width : 200px;
+}
+</style>
+<script>
+function calc() {
+	//입력한 값을 가져오기
+	xvalue = parseInt(document.querySelector('#x').value);
+	yvalue = parseInt(document.querySelector('#y').value);
+	
+	sum = xvalue + yvalue;
+	
+	//출력
+	document.querySelector('#sum').value = sum;
+	
+	document.querySelector('#sp1').innerHTML = xvalue; 
+	document.querySelector('#sp2').innerHTML = yvalue; 
+	document.querySelector('#sp3').innerHTML = sum; 
+}
+
+function calc2(a) { /*더하기 빼기 나누기 곱하기 중네서 하나만 a에 들어가*/
+	//입력한 값을 가져오기
+	xvalue = parseInt(document.querySelector('#x2').value);
+	yvalue = parseInt(document.querySelector('#y2').value);
+	
+	switch(a) {
+	case '+' :
+		res = add(); /*파라미터는 없고   res라는리턴값은 있어 만약에 저 위에서 xvalueyvalue 이런 애들이 지역변수로 써지면 add() 안에 넣어줘야 돼.*/
+		break; //어차피 한 가지만 실행도ㅐ서 res변수명 다 똑같이 줫어
+	case '-' :
+		res = sub();
+		break;
+	case '*' :
+		res = multi();
+		break;
+	case '/' :
+		res = div();
+		break;
+	}
+	
+	//출력
+	print()
+}
+
+function add() {
+	a = xvalue + yvalue;
+	return a;
+}
+function sub() {
+	return xvalue - yvalue;
+}
+function multi() {
+	return xvalue * yvalue;
+}
+function div() {
+	a = xvalue / yvalue;
+	return a;
+}
+function print() {
+	//id가 result인 요소 검색 - 
+	document.querySelector('#result').value = res;
+	
+	//id가 sp1인 요소 검색 - 
+	document.querySelector('#sp12').innerHTML = res;
+	//id가 sp2인 요소 검색 - 
+	document.querySelector('#sp22').innerHTML = res;
+	//id가 sp3인 요소 검색 - 
+	document.querySelector('#sp32').innerHTML = res;
+	
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">  
+<br>
+<form>​
+        첫번째 :<input type="text" id="x"><br>​
+  	두번째 :<input type="text" id="y"><br>​
+   	결과 :<input type="text" id="sum"><br>​
+  
+  	<input type="button" ​
+  		   onclick="calc()" value="확인">​
+  	<br>​
+      <p>첫번째 값 :<span id="sp1"></span> </p>​
+      <p>두번째 값 :<span id="sp2"></span> </p>​
+      <p>결과 :<span id="sp3"></span> </p>   
+</form>​
+</div>   
+
+<div class="box">  
+<br>
+<form>​
+        첫번째 :<input type="text" id="x2"><br>​
+  	두번째 :<input type="text" id="y2"><br>​
+   	결과 :<input type="text" id="result"><br>​
+  <br>  
+  
+  <input type="button" value="+" onclick="calc2('+')">
+  <input type="button" value="-" onclick="calc2('-')">
+  <input type="button" value="*" onclick="calc2('*')">
+  <input type="button" value="/" onclick="calc2('/')">
+     ​
+  	<br>​
+      <p>첫번째 값 :<span id="sp12"></span> </p>​
+      <p>두번째 값 :<span id="sp22"></span> </p>​
+      <p>결과 :<span id="sp32"></span> </p>   
+</form>​
+</div>   
+</body>
+</html>

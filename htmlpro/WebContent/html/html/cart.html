@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+<link rel="stylesheet" href="../css/css.css">
+</head>
+<body>
+	<table border="1" id="cart">
+		<caption>Shopping Cart</caption>
+		<tr>
+			<th>품목</th>
+			<th>가격</th>
+			<th class="qtysum">수량</th>
+			<th class="qtysum">합계</th>
+		</tr>
+
+		<tr>
+			<td>컴퓨터 세트</td>
+			<td>2,000,000원</td>
+			<td><input type="number" min="0" max="99" step="1" value="0" name="comQty"></td>
+			<td><input type="text" name="comSum" id="comSum" class="cartsum"></td>
+		</tr>
+
+		<tr>
+			<td>티셔츠</td>
+			<td>50,000원</td>
+			<td><input type="number" min="0" max="99" step="1" value="0" name="tQty"></td>
+			<td><input type="text" name="comSum" id="tSum" class="cartsum"></td>
+		</tr>
+
+		<tr>
+			<td>음악</td>
+			<td>1,000원</td>
+			<td><input type="number" min="0" max="99" step="1" value="0" name="musicQty"></td>
+			<td><input type="text" name="comSum" id="musicSum" class="cartsum"></td>
+		</tr>
+
+		<tr>
+			<td>영화</td>
+			<td>5,000원</td>
+			<td><input type="number" min="0" max="99" step="1" value="0" name="movieQty"></td>
+			<td><input type="text" name="comSum" id="movieSum" class="cartsum"></td>
+		</tr>
+	</table>
+
+		<input type="button" value="계산">
+		<input type="button" value="구매">
+		<input type="reset" value="초기화"><br>
+
+		<a href="main.html">Back to Home</a>
+</body>
+</html>

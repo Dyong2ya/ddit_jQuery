@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  div{
+    margin : 3px;
+    padding : 5px;
+    box-sizing: border-box; /*패딩하고 보더때문에 30 70 상자가 다 안 맞아. 그거를 알아서 계산??????????? 테두리와 패딩을 포함시키서 계산하게 한는거ㅑㅇ*/
+    border-radius: 20px;
+  }
+  .hf{
+    width : 100%;
+    height : 90px;
+    margin : 10px;
+  }
+  #header{
+    background : yellow;
+  }
+  #nav{
+    background : rgba(255,28,200,0.4);  /*a는 투명도야. 0.0~1.0사이의 값을 줘*/
+    width : calc(30% - 1%); /*화면 줄였다 늘였다 할 때 안 깨지게 하려고 하는 거야. 상대적인 값이라 유동적으로 바꿔야 함*/
+    height : 400px;
+    //background : orange;  
+    float : left;   
+  }
+  #content{
+    width : calc(70% - 5px);
+    height : 400px;
+    background : green; 
+    float : right;     
+  }
+  #footer{
+    background : rgb(100%, 78%, 90%);
+    clear: both;    
+  }
+  
+</style>
+</head>
+<body>
+  <div class="hf" id="header"></div>
+  <div id="nav"></div>
+  <div id="content"></div>
+  <div class="hf" id="footer"></div>
+</body>
+</html>

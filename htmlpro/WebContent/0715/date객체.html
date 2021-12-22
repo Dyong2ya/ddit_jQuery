@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+function proc1() {
+	now1 = new Date();
+	now2 = new Date(123456789); //1970.1.1을 기준으로해서 ()안의 숫자만큼의 초가 지난 날짜
+	now3 = new Date("2010.07.15");
+	now4 = new Date(2012, 07-1, 15); //월은 0월부터 ㅅㅣ작해서 1월~11월 이렇게 계산되기때문에 -1 안 하고 07로만 하면  8월로 찍혀 
+	
+	//출력내용
+	str = "new Date() : " + now1 + "<br>";
+	str += "new Date(123456789) : " + now2 + "<br>";
+	str += "new Date('2010.07.15') : " + now3 + "<br>";
+	str += "new Date(2012, 07, 15) : " + now4 + "<br><br>";
+	
+	str += now1.toLocaleString() + "<br>";
+	str += now2.toLocaleDateString() + "<br>"
+	str += now3.toLocaleTimeString() + "<br>"
+	str += now4.toLocaleString() + "<br>";
+	
+	document.getElementById('result1').innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box"> 
+<h2>Date객체</h2>
+new Date()<br>
+new Date(millisecond) : 1970.1.1을 기준으로해서 millisecond만큼의 초가 지난 날짜<br>
+new Date(dateString) : 파라미터 변수의 날짜를 문자로 표현<br>
+new Date(year, month, day, hour, ...) : 각각의 파라미터에 숫자형태의 데이터를 전달한다.<br><br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+</body>
+</html>

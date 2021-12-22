@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+function proc1(t) { //밑에 있는 무궁화꽃이 피었습니다를 t로 받는거야
+	text = document.createTextNode(t); //정보 받아오려고 ------ 우선 만들고↓	
+	parent = document.getElementById('target'); //부모검색
+	
+	parent.appendChild(text);
+}
+
+proc2 = () =>{
+	//result2검색
+	r2 = document.getElementById('result2');
+	
+	//result2 안에 있는 0번째 ul검색
+	r2ul = r2.getElementsByTagName('ul')[0];
+			//r2ul = r2.querySelector('ul') //querySelector는 첫번 째거 찾는거라 [0]안 붙여
+	
+	//result2에 있는 ul중 모든 li검색
+	r2li = r2ul.getElementsByTagName('li');
+	
+	//r2ul반복문
+	for(i=0; i<r2li.length; i++){
+		//li의 텍스트를 가져온거야
+		str = r2li[i].firstChild.data //data안 붙이면 그냥 object만 와
+		
+	    //새로운 '이미지 태그'를 생성한다
+		vimg = document.createElement('img');
+		//속성추가 <img src="../images/커피1.jpg" alt="">
+		vimg.setAttribute('src', '../images/' + str + '.jpg');
+		vimg.setAttribute('alt', str);
+		
+		vimg.src = '../images/' + str + '.jpg';
+		vimg.alt = str;
+		vimg.width = 100;
+		vimg.height = 100;
+		
+		r2li[i].appendChild(vimg)
+	}
+}
+
+function proc3(t) { //파라미터에 t를 넣어서 계속 안 불러와도 돼
+	//li(t)의 문자텍스트 가져오기
+	str = t.firstChild.data; //위처럼 for문 안 돌리고 r2li[i]얘를 그냥 t로 받는거야
+	
+	//새로운 img태그 생성
+	timg = document.createElement('img'); //태그이름을 받는 거
+	
+	//속성
+	timg.setAttribute('src', '../images/' + str + '.jpg');
+	timg.setAttribute('alt', str);
+	
+	timg.src = '../images/' + str + '.jpg';
+	timg.alt = str;
+	timg.width = 100;
+	timg.height = 100;
+	
+	//li(t)에 생성된 이미지를 추가
+    t.appendChild(timg)
+	
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">  
+<br><br>
+<input type="button" value="확인" onclick="proc1('무궁화 꽃이 피었습니다')">
+<br><br>
+<div id="result1"> 
+  <div id="target" ​style="font: italic bold 20px;">둥근 해가 떴습니다앙
+  </div>
+</div>
+</div>   
+
+<div class="box">  
+<br><br>
+<input type="button" value="확인" onclick="proc2()">
+<br><br>
+ <div id="result2"> 
+  <ul>
+    <li>국화</li>
+    <li>딸기스무디</li>
+    <li>수국</li>
+    <li>식품1</li>
+    <li>호랑이</li>
+  </ul> 
+ </div>
+</div>  
+
+<div class="box">  
+<br><br>
+<div id="result3"> 
+<ul>
+  <li onclick="proc3(this)">국화</li> <!-- 5개 중에 하나만 선택하고 싶어서 this를 넣는거야 -->
+  <li onclick="proc3(this)">딸기스무디</li>
+  <li onclick="proc3(this)">수국</li>
+  <li onclick="proc3(this)">식품1</li>
+  <li onclick="proc3(this)">호랑이</li>
+</ul> 
+</div>
+</div>  
+
+</body>
+</html>

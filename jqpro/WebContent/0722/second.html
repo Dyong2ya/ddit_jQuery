@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<script> //script는 순서대로 가기 때문에 $('#result1')이렇게 쓰면 없잖아. 밑에 box에 있는 애들 없잖아 그래서 오류나. 아예 밑에 쓰던가 아니면  예시처럼
+  $(document).ready(function() {
+	document.getElementById('result1').style.backgroundColor = 'yellow';
+	
+	$('#result1').css('background-color', 'pink');
+   
+	$('#btn1').on('click', function() {
+		
+		/*vh = document.getElementsByTagName('h1');
+		vh[1].style.color = 'white';  //전체 하고 싶다고 vh.style.color = 'white';  이런 식으로 하면 안 먹혀서 for문을 돌리는 거야
+		
+		for(i=0; i<vh.length; i++){
+			vh[i].style.color = 'green';
+		}*/
+		
+		vh = $('#result1 h1');
+		vh.css('color', 'yellow');  //jQuery는 변수만 받아와서 돌리면 전체 다 바뀌어
+		
+		vh.eq(1).css('color', 'white');
+		
+	}) //btn1이 끝났을 때
+	
+	$('#btn2').on('click', function() {
+		
+		$('#result2 h1').hide();
+	
+	})
+	
+	$('#btn3').on('click', function() {
+		
+		$('#result2 h1').show();
+	
+	})
+	
+})//$(document).ready(function() {영역 안
+
+ 
+</script>
+</head>
+<body>
+
+<div class="box">  
+  <br><br>
+  <input id="btn1" type="button" value="확인">
+  <br><br>
+  <div id="result1"> 
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+  </div>
+</div>   
+
+<div class="box">  
+  <br><br>
+  <input id="btn2" type="button" value="hide">
+  <input id="btn3" type="button" value="show">
+  <br><br>
+  <div id="result2"> 
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+     <h1>무궁화 꽃이 피었습니다</h1>
+  </div>
+</div>   
+</body>
+</html>

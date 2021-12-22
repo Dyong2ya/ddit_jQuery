@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+   cnt = 0;
+   //$(document).delegate('.but', 'click', function(){})
+   //$(document).on('click', '.but', function(){
+   $('.dd').on('click', '.but', function(){
+      cnt++;
+      
+      nbtn = $('<input>', {
+         'type' : 'button',
+         'class' : 'but',
+         'value' : '버튼' + cnt
+      });
+      $(nbtn).appendTo('#result1');
+   })
+   $('.boff').on('click', function(){
+      //이벤트 핸들러 종료
+      $('.dd').off('click');
+      //$('.dd').undelegate('click');
+   })
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+버튼1, 2 클릭 시 새로운 똑같은 버튼을 생성 후 reslut1에 추가<br>
+delegate방식 : 실행 전 미리 생성된 요소와 새로 만들어질 요소 이벤트 핸들러 등록<br>
+$(document).on('click', '.but', function(){})<br>
+$(document).delegate('.but', 'click', function(){})<br><br>
+   <div class="dd">
+      <input type="button" class="but" value="버튼1">
+      <input type="button" class="but" value="버튼2">
+   </div>
+   <br>
+   <input type="button" class="boff" value="해제">
+   <div class="dd" id="result1"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+$(function(){
+	
+	$('#btn1').on('click', function() {
+		str="";
+		
+		/*$.getJSON()    만약 이렇게 쓰고 싶으면 밑에 'json'생략해야돼*/
+		//ajax를 사용하는 대신 단축어 사용
+		$.get(
+				'objarr.jsp',
+				function(res){
+					str += "<table class='table table-bordered table-hover' border='1'>";
+					str += "<tr><td>이름</td><td>주소</td><td>전화번호</td></tr>";
+					$.each(res, function(i, v) {
+						//str += "<tr><td>" + v.name + "</td><td>" + v.addr + "</td><td>" + v.tel + "</td></tr>";
+						str +=`<tr><td> ${v.name} </td><td> ${v.addr} </td><td> ${v.tel} </td></tr>`;
+					})
+					str += "</table>";
+					
+					$('#result1').html(str);
+				},
+				'json'
+		)
+		
+/* 		$.ajax({
+			url : 'objarr.jsp',
+			type : 'get',
+			success : function(res) { //objarr.jsp에 들어있는 배열을 res[0],[1]..이런식으로 받아오는 res변수
+				//json반복문 
+				$.each(res, function(i, v) {  //여기서 i는 늘어나는 개수(인덱스), v는 i번 째를 받는 변수(value)
+// 					v.name		//res[i].name		//this.name  -- 세 개 중에 골라써~
+// 					v.addr
+// 					v.tel
+				}) 
+				
+				//for(i=0; i<res.length; i++){
+				//	res[i].name
+				//	res[i].addr
+				//	res[i].tel
+				//}
+			},
+			error : function(x) {
+				alert("status 상태 : " + x.status);
+			},
+			dataType : 'json'
+			
+		}) */
+	})
+
+})
+</script>
+</head>
+<body>
+
+<div class="box">  
+    json object배열 응답받기<br><br>
+    <input type="button" value="확인" id="btn1">
+    <br><br>
+    <div id="result1"></div>
+</div>   
+</body>
+</html>

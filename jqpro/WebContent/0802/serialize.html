@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<script>
+$(function() {
+/* 	$(#'btn1').on('click', function() {
+		//입력한 모든 값을 가져온다 -- id 또는 name을 이용한다
+		vid = documentsByName('id').value	 /	$('#id').val()
+		vname = documentsByName('name').value  /   $('#name').val()
+		vaddr = documentsByName('addr').value  /  $('#addr').val()
+		vtel = documentsByName('tel').value  /  $('#tel').val()
+		vemail = documentsByName('email').value  /  $('#email').val()
+		
+		data = "id=" + vid + "&name=" + vname  + "&addr=" + vaddr + "&tel=" + vtel + "vemail=" + vemail		//여기서 파란 글씨는 request.getParameter
+		
+		data = { 'id' : vid, 'name' : vname, 'addr' : vaddr, 'tel' : vtel, 'email' : vemail }
+		
+	}) */
+	
+	//serialize을 해주게 되면 위의 코드문 다 필요없어
+	$('#btn1').on('click', function() {
+		//입력한 모든 값을 가져온다 -- serialize()이용
+		
+		datas1 = $('form').serialize();
+		datas2 = $('form').serializeArray();
+		datas3 = $('form').serializeJSON(); //얘는 "jquery.serializejson.min.js"이 라이브러리가 필요
+		console.log(datas1);
+		console.log(datas2);
+		console.log(datas3);
+		
+		//서버로 보내기 응답
+		$.ajax({  //얘로 받아서 주소도 페이지도 바뀌지 않는다.
+			url : 'formdata.jsp',
+			type : 'post',
+			data : datas3,
+			success : function(res) { //수행된 jsp에서 성공한 결과만 넘어온다.
+				str = "";
+				str += `이름 : ${res.name} <br>`
+				str += `전화번호 : ${res.tel} <br>`
+				str += `아이디 : ${res.id} <br>`
+				
+				$('#result1 div').html(str);
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status);
+				
+			},
+			dataType : 'json' //응답결과의 형식 xml, text, json
+		})
+		
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">  
+    <br><br>
+    
+    <br><br>
+    <div id="result1">
+      <form>
+      	아이디 <input type="text" name="id" id="id"><br> <!-- serialize할거면 name 꼭 있어야돼 -->
+      	이름 <input type="text" name="name" id="name"><br>
+      	주소 <input type="text" name="addr" id="addr"><br>
+      	전화번호 <input type="text" name="tel" id="tel"><br>
+      	이메일 <input type="text" name="email" id="email"><br>
+      	
+      	<input type="button" value="확인" id="btn1">
+      </form>
+      
+      <div></div>
+    </div>
+</div>   
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+  <style>
+  div{   /*정적인 스타일이야*/
+    width : 550px;
+    height: 150px;
+    border : 3px solid orange;
+    
+    margin : 20px;
+    padding : 20px;
+  }
+  </style>
+</head>
+<body>
+<pre>
+버튼없이 실행하자마자 script를 실행해서 div에 날짜정보를 출력한다.
+script의 위치가 div요소 밑에 있어야 div요소를 검색할 수 있다. ↓코드에서 밑에 잘 봐봐
+</pre>
+  <br>
+  <br>
+  <img src="../images/단풍.jpg" alt="단풍.jpg">
+  <br>
+  <div></div>
+  
+  
+    <script>
+  	var now = new Date();
+	var now2 = now.toLocaleString();
+	var now3 = now.toLocaleDateString();
+ 	var now4 = now.toLocaleTimeString();
+	
+  	//출력장소 : div에 접근검색하게 만들고 싶어
+ 	var vd = document.getElementsByTagName('div')[0]/*배열*/
+ 	
+ 	//출력 정보 작성
+ 	 var str = "new Date() => " + now + "<br>";
+ 	 str += "now.toLocaleString() => " + now2 + "<br>";  
+	 str += "now.toLocaleDateString() => " + now3 + "<br>";
+	 str += "now.toLocaleTimeString() => " + now4;
+	 
+	 //출력
+	 vd.innerHTML = str;
+  </script>
+
+</body>
+</html>

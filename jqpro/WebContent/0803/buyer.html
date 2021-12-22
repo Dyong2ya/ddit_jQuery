@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+<script>
+$(function() {
+// 	$('input[type=button]')
+// 	$('input:button')
+	
+	$('input').on('click', function() {
+	
+		$.ajax({
+			url : 'buyerNames.jsp',
+			success : function(res) {
+				str = "";
+				$.each(res, function(i, v) {
+					//res[i].id
+					//res[i].name
+					
+					//this.id -- 위에서 파라미터 i,v 안 받으면 this로 쓸 수 있다.
+					//this.name -- 
+					str += "<p id='" + v.id + "'>" + v.name + "</p>"
+				})
+				$('#names').html(str); //names칸에 찍어주려고
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+			
+		})
+	})
+	
+/*	$(document).on('click', 'p', function() {  //p태그는 원래부터 있는 게 아니어서 bind형식이 아니라 delegate형식으로 ㅎ해줘야돼 0729.p태그 대신에 부모를 써도 되니까 names나 result1을 써도 된다.
+		idvalue = $(this).attr('id');
+	
+		$.getJSON(
+			'detail.jsp',
+			'id=' + idvalue, //{ 'id' : idvalue }, 
+			function(res) {
+				str = `<table class = >`
+				
+				str += `<tr><tr>BUYER_ID</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_NAME</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_LGU</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_BANK</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_BANKNO</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_BANKNAME</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_ZIP</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_ADDR1</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_ADDR2</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_COMTEL</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `<tr><tr>BUYER_MAIL</td>`;
+				str += `<td> ${res.id} </td></tr>`
+				
+				str += `</table>`
+				
+				
+// 				str = res.id + "<br>"
+// 				str += res.name + "<br>"
+// 				str += res.lgu + "<br>"
+// 				str += res.bank + "<br>"
+// 				str += res.bankno + "<br>"
+// 				str += res.bankname + "<br>"
+// 				str += res.zip + "<br>"
+// 				str += res.add1 + "<br>"
+// 				str += res.add2 + "<br>"
+// 				str += res.comtel + "<br>"
+// 				str += res.mail + "<br>"
+
+				$('#info').html(str);
+			})
+		}) JSON으로 하면 res. 뭐시기로 가공해야되는데 밑에처럼 하면 간단*/
+		
+		$(document).on('click', 'p', function(){
+			idvalue = $(this).attr('id');
+			$.get( //단축키
+					'detailHtml.jsp',
+					'id=' + idvalue, //{ 'id' : idvalue }, 
+					function(res) {	//function에서 html로 받아서 처리한거야
+						$('#info').html(res);
+					},
+					'html'
+			)
+		})
+	})
+</script>
+<style>
+  td{
+  	width : 300px;
+  	height: 50px;
+  	text-align: center;
+  }
+  #a{
+    background: #40E0D0;
+  }
+  p:hover{
+  	color: red;
+  	background: lime;
+  }
+  #detail{
+  	width: 600px;
+  }
+</style>
+</head>
+<body>
+
+<div class="box">  
+    Buyer <br><br>
+    <input type="button" value="확인">
+    <br><br>
+    <div id="result1">
+    	<table border='1'>
+    		<tr id='a'>
+    			<td>거래처이름</td>
+    			<td id="detail">거래처 상세정보</td>
+    		</tr>
+    		
+    		<tr>
+    			<td id="names"></td>
+    			<td id="info"></td>
+    		</tr>
+    		
+    	</table>
+    </div>
+</div>   
+</body>
+</html>

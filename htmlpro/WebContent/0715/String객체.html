@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+/*  --이러한 방식으로 함수를 표현할 수 있다--
+function proc1(매개변수) {}
+var proc1 = function(매개변수) {}
+*/
+str = "우리 나라 만세 좋은 국가 화이팅 대한민국 사랑해 ";
+//람다함수 : 
+var proc1 = () => { 
+	ch = str.charAt(6); //0부터 읽혀
+	
+	//출력내용
+	res = str + "<br>";
+	res += "str.charAt(6) : " + ch + "<br>";
+	
+	document.getElementById('result1').innerHTML = res;
+}
+function proc2() {
+	str = "Goood Morning";
+	ch = str.charCodeAt(6); //0부터 읽혀
+	
+	//출력내용
+	res = str + "<br>";
+	res += "str.charCodeAt(6) : " + ch + "<br>";
+	
+	document.getElementById('result2').innerHTML = res;
+}
+
+var proc3 = () => {
+	res = "str.length : " + str.length + "<br>";
+	
+	str = str.trim();
+	
+	res += "trim() str.length : " + str.length + "<br>";
+	
+	document.getElementById('result3').innerHTML = res;
+	
+}
+
+var proc4 = () => {
+	//입력한 값 가져오기
+	nameValue = document.getElementById('name').value;
+	
+	//공백체크
+	len = nameValue.trim().length;
+	
+	if(len < 1){ //글자가 안 들어있다는 걸 알 수 있어
+		alert("이름을 입력하세요");
+		return; //return이 있어야 밑에거가 실행이 안돼.
+	}
+	
+	document.getElementById('result4').innerHTML = nameValue + "를 서버로 전송합니다";
+}
+</script>
+</head>
+<body>
+<pre>
+<h1>람다함수 : 
+var proc = (매개변수) => { }</h1>
+
+<strong>매개변수가 없거나 여러개이면 ()괄호를 표현</strong>>
+var proc = (a, b) => { }<br>
+var proc = () => { }<br>
+
+
+<strong>매개변수가 하나일 경우는 ()괄호 생략</strong>
+var proc = (a) => { }<br>
+var proc = a => { }<br>
+
+</pre>
+<div class="box">  
+charAt(index) : index위치의 문자를 리턴<br>
+charCodeAt(index) : index위치의 문자의 코드값을 리턴<br>
+<input type="button" value="charAt" onclick="proc1()">
+<input type="button" value="charCodeAt" onclick="proc2()">
+<input type="button" value="trim" onclick="proc3()">
+<br><br>
+<div id="result1"> </div>
+<div id="result2"> </div>
+<div id="result3"> </div>
+</div>   
+
+<div class="box">  
+이름 <input type="text" neme="name" id="name"><br><br>
+<input type="button" value="확인" onclick="proc4()">
+<br><br>
+<div id="result4"> </div>
+</div>   
+</body>
+</html>

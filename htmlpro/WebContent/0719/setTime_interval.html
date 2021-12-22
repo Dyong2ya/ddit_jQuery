@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style> //정적
+
+</style>
+<script> //동적
+proc1 =() => {
+	b = setTimeout(function(){ //window.setTimeout
+		a = document.getElementById('result1');
+		a.style.backgroundColor = 'yellow';
+	}, 1000) 
+}
+
+proc2 =(byeonsu) => {
+	//byeonsu1 매개변수는 this를 파라미터로 받음. this는 확인 버튼이다.
+	bok = byeonsu; //얘가 전역변수여야 돼 그래야 밑에서도 사용되지
+	b = setInterval(function(){
+		a = document.getElementById('result2');
+		
+		//0~256사이의 랜덤수를 발생
+		x = Math.floor(Math.random()*256);
+		y = parseInt(Math.random()*256);
+		z = parseInt(Math.random()*256);
+		
+		console.log(b, x, y, z);
+		
+		a.style.backgroundColor = 'rgb(' + x + ',' + y + ',' + z +')';
+		
+		//x, y, z를 16진수로 변환
+// 		a.style.backgroundColor = '#' + x + y + z';
+		
+		
+// 		a.style.backgroundColor = 'rgb(' + x + '%,' + y + '%,' + z +'%)';
+	}, 500)
+	
+	//확인버튼(byeonsu2) 안 보이게 하기
+	byeonsu.style.display = "none";
+}
+
+stop = (byeonsu) => {//when 종료버튼눌렀을 때
+	//stop의 byeonsu이다. 
+	bstop = byeonsu; //밑에서 사용하려고 전역변수로 준거야
+	clearInterval(b);
+	
+	//확인버튼 다시 보이기
+	bok.style.display = "inline";
+	
+	//종료버튼 안 보이게
+	byeonsu.style.display = "none";
+	
+	//종료버튼 다시 보이게
+	bstop.style.display = "inline"; //또는 block
+}
+
+//가장 먼저 실행
+changeColor = (byeonsu) =>{
+	
+	ptag = document.querySelector('p');
+	//ptag = document.getElementsByTagName('p')[0];
+	
+	//result3안의 p태그의 글자색과 배경색을 랜덤으로 바꾼다.
+	//setInterval()이용
+	change = byeonsu;
+	a = setInterval(function(){
+	
+	x = Math.floor(Math.random()*256);
+	y = parseInt(Math.random()*256);
+	z = parseInt(Math.random()*256);
+	
+	console.log(a, x, y, z);
+	
+	ptag.style.backgroundColor = 'rgb(' + x + ',' + y + ',' + z +')';
+	ptag.style.color = 'rgb(' + z + ',' + x + ',' + y +')'; //글자랑 배경이랑 달라야지 글자가 보이니까 변수위치를 다르게
+	}, 500)
+}
+
+function proc3() {
+	//result3안의 p태그의 글자색과 배경색변경을 멈춘다.
+	clearInterval(a);
+}
+</script>
+</head>
+<body onload="changeColor();">
+
+<div class="box">  
+setTimeout(function(){}, millisec)<br>
+정해진 millisec의 시간이 지나면 function을 한 번만 수행한다.<br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"></div>
+</div>   
+
+<div class="box">  
+setInterval(function(){}, millisec)<br>
+정해진 millisec의 시간이 지날 때 마다 반복적으로 function을 수행한다.<br>
+<input type="button" value="확인" onclick="proc2(this)">
+<input type="button" value="종료" onclick="stop(this)">
+<br><br>
+<div id="result2"></div>
+</div> 
+
+<div class="box">  
+setInterval(function(){}, millisec)<br>
+정해진 millisec의 시간이 지날 때 마다 반복적으로 function을 수행한다.<br>
+<input type="button" value="중지" onclick="proc3(this)">
+<br><br>
+<div id="result3"></div>
+<p>This is a Text </p>
+</div> 
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  select{
+    width : 500px;
+    height : 50px;
+    font-size : 1.5em;
+  }
+  #sel2, #sel3{
+    height : auto;
+  }
+  
+
+</style>
+
+<script>
+  //함수정의 -- 서버로 보내지 않고 처리하는 것 밑에 얼럿(str)까지 
+  //자바스크립트는 함수에 매개변수 타입을 지정하지 않아도 여러 타입의 매개변수를 사용할 수 있다.
+  //함수 호출 시 (this)를 입력해 호출하는 대상자를 지정해줘야 한다. this를 입력하지 않으면 어디서 호출했는지 함수는 알 수 없다.
+  //var(같은 이름의 변수 재선언 가능), let(같은 이름의 변수 재선언 불가능)
+  function proc(a){ //a는 select함수
+	  var val = ""; /*누적된 수를 받으려면 무조건 선언이 필수다. 변수 선언*/  /*스크립트 버젼에 따라서 var말고 변수선언할 때 Ecmascript(자바스크립트버젼x) version6 이후 let으로 받아도 된다. const는 절대 바뀌지 않는 상수이다.*/
+	  
+	  for(i=0; i<a.options.length; i++){ /*int이런 타입을 설정해 줄 필요가 없다.*/
+		  if(a.options[i].selected == true){ /*selected선택되었는지 아닌지*/
+			  val += a.options[i].value;
+		  }
+	  }
+	  //alert(val); /*처리해서 서버로 보내는거 form에 넣어서*/
+	  
+	  //textarea에 출력
+	  var area[] = document.getElementsByTagName('textarea') //만약 뒤에 [0]순서를 넣으면 배열이 아니게 돼
+	  area[0].value = val; //alert으로 찍었던 거를 textarea의 value값으로 출력
+	  
+	  
+																														/*var vform = document.getElementById('ff')
+																														  
+																														  //action 속성값과 method속성값 설정 - setAttribute('action', 'aaa.jsp')
+																														  vform.setAttribute('action', 'select.jsp?val=' + val);
+																														  vform.setAttribute('method', 'get');
+																														  vform.submit(); */
+  } 
+  function send(){ //사실 send는 밑에 서버로 보내기 이 부분만 있으면 돼
+	 //select요소에 접근
+	let sel = document.getElementById('sel3');  
+	let str = "";
+	
+	  //option의 개수만큼 반복 - 선택여부를 판단
+	  for(var i=0; i<sel.options.length; i++){ /*옵션 선택개수에 따라 돌아*/
+		  if(sel.options[i].selected == true){ /*selected선택되었는지 아닌지*/
+			  str += sel.options[i].value + " " //선택된 값을 담는다.
+ 		 }
+	  }
+	  alert(str);
+	 
+	  
+	  
+	  
+	  //서버로 보내기 - form의 id를 검색 - action과 method를 설정
+	  document.getElementById('ff3').setAttribute('action','select.jsp');
+	  document.getElementById('ff3').setAttribute('method','get');
+	  //위에 두 줄은 밑에서 action method설정했으면 굳이 필요없어.
+	  document.getElementById('ff3').submit()
+  }
+</script>
+</head>
+<body>
+<h1>좋아하는 음식</h1><br>
+<h2>한개만 선택 - onchange - proc함수 하나야. 구분하려고 this쓴거고</h2>
+<form id="ff">        <!-- <form action="aaa.jsp" method="post" id="ff">이렇게 써도 되는데 위에서 설정해줘도 돼 -->
+  <select onchange="proc(this)">
+    <option value="삼겹살">삼겹살</option>
+    <option value="라면">라면</option>
+    <option value="파스타">파스타</option>
+    <option value="초밥">초밥<option>
+    <option value="빙수">빙수</option>
+    <option value="떡볶이">떡볶이</option>
+  </select>
+ </form>
+ 
+ 
+  
+ 
+ <h2>여러개 선택 - onchange - proc함수 하나야. 구분하려고 this쓴거고</h2><!-- ctrl누르고 클릭해야 돼 -->
+   <select onchange="proc(this)" id="sel2" multiple="multiple" size="5">
+    <option value="삼겹살">삼겹살</option>
+    <option value="라면">라면</option>
+    <option value="파스타">파스타</option>
+    <option value="초밥">초밥<option>
+    <option value="빙수">빙수</option>
+    <option value="떡볶이">떡볶이</option>
+  </select>
+  
+  <h2>여러개 선택 - button - 서버로 보내기(send())</h2>  
+  <!--<form id="ff3" action="aaaa.jsp" method="post">-->
+  <form id="ff3">
+   <select name="food" id="sel3" multiple="multiple" size="5">
+    <option value="삼겹살">삼겹살</option>
+    <option value="라면">라면</option>
+    <option value="파스타">파스타</option>
+    <option value="초밥">초밥<option>
+    <option value="빙수">빙수</option>
+    <option value="떡볶이">떡볶이</option>
+  </select>
+  <input type="button" value="전송" onclick="send()">
+  </form>
+  
+  
+  </body>
+  </html>

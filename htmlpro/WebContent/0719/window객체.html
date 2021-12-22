@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+
+</style>
+<script>
+proc1 = () => {
+// 	a = window.open("http://naver.com", "_blank", "top=200 left=300 width=500 height=400");
+// 	a.moveTo(200,200);
+	window.open("winsub.html", "_blank", "width=300 height=200");
+}
+</script>
+</head>
+<body>
+
+<div class="box">  
+새로운 창 열기<br>
+window.open(url, target/name, specs)<br> 
+parameter는 모두 선택적으로 사용 가능 - 모두 생략 시 내용이 없는 비어있는 창<br> 
+target : _blank, _self<br>
+target대신에 name이 올 수 있다.<br><br><!-- 물리적name이 아니고 논리적name이라 안 보여 -->
+<input type="button" value="naver" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+</body>
+</html>

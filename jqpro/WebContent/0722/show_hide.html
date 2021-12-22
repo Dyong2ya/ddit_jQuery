@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function() {
+	
+	$('h1').on('click', function() {
+		$(this).hide();
+		
+		//보이는 h1의 개수를 파악 - 0이면  show버튼이 나타난다.
+		if($('h1:visible').length == 0){
+			$('input[value=show]').show();
+		}
+	})
+	
+	$('input[value=show]').on('click', function() {
+		//h1은 보이고
+		$('h1').show();
+		//show버튼 사라지기
+		$(this).hide(); //현재 이벤트가 발생된 대상을 this로 받는거야.
+		//$(this).css('display', 'none');
+		//this.style.display = "none"; -- 스크립트 버젼
+		
+	})
+	
+})
+</script>
+<style>
+input[value=show]{
+  display : none;
+}
+h1:hover{
+  background : #FFE4E1;
+}
+</style>
+</head>
+<body>
+
+<div class="box">  
+h1태그를 클릭하면 클릭한 대상요소가 사라진다.<br>
+h1요소가 모두 사라지면 show버튼을 나타낸다<br>
+show버튼을 클릭하면 h1요소가 다시 나타난다.<br>
+show버튼 감추기<br><br>
+<input type="button" value="show">
+<br><br>
+<div id="result1"> </div>
+     <h1>무궁화 꽃이 피었습니다1</h1> <!-- 자바스크립트 버젼 <h1 onclick="proc(this)">무궁화 꽃이 피었습니다1</h1> -->
+     <h1>무궁화 꽃이 피었습니다2</h1>
+     <h1>무궁화 꽃이 피었습니다3</h1>
+     <h1>무궁화 꽃이 피었습니다4</h1>
+     <h1>무궁화 꽃이 피었습니다5</h1>
+     <h1>무궁화 꽃이 피었습니다6</h1>
+     <h1>무궁화 꽃이 피었습니다7</h1>
+     <h1>무궁화 꽃이 피었습니다8</h1>
+     <h1>무궁화 꽃이 피었습니다9</h1>
+     <h1>무궁화 꽃이 피었습니다10</h1>
+</div>   
+</body>
+</html>

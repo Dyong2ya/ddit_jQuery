@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+  div{
+    border : 1px solid green;
+    margin : 20px;
+    padding : 10px;
+  }
+  .pp{  /*p.pp*/
+    font-size : 2.0em;
+  }
+  p#p2{  /*p[id=p2]*/
+    background : cyan;
+  }
+  p[class=p1]{   /*p.p1*/
+    color : red;
+  }
+  p[title=무궁화]{
+    border : 1px solid green;
+  }
+  p[title]{
+   text-shadow : 50px 20px 5px green;  /*옆으로-밑으로-숫자가클수록흐려져*/
+  }
+  </style>
+</head>
+<body>
+<pre>
+속성선택 
+  p[class=p1]{   /*p.p1*/
+    color : red;
+  }
+  p[title=무궁화]{
+    border : 1px solid green;
+  }
+  p[title]{
+   text-shadow : 50px 20px 5px green;  /*옆으로-밑으로-숫자가클수록흐려져*/
+  }
+
+</pre>
+<div id="d1">
+   <p class="p1" title="무궁화"><span>무궁화</span> 꽃이 피었습니다</p> <!--title은 글씨에 마우스 가져다 대면 말풍선처럼 뜨는 거-->
+   <p class="pp" title="무지개">무지개가 떴습니다</p>
+   <p id="p2" title="강아지">우리집 강아지는 복슬강아지</p>
+   <p class="pp">햇볕은 쨍쨍 모래알은 반짝</p>
+   <p>태극기가 바람에 펄럭입니다</p>
+</div>
+</body>
+</html>

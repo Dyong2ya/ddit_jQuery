@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+  table{
+    border : 5px solid blue;
+    margin : 50px auto;
+  }
+  td{
+    width : 300px;
+    height : 100px;  
+    text-align : center;
+    font-size : 2.0em; 
+  }
+  table#tab2{ /*저 사이를 띄게 되면 후손이 된다.*/
+    border-collapse : collapse;
+    empty-cells : hide; /*collapse에서 붙어있기 때문에 지워지지 않는다.*/
+  }
+  #tab3{
+    border-spacing : 10px;
+    empty-cells : hide; /*내용이 없는 셀을 그리지 않는다*/
+  }
+</style>
+</head>
+<body>
+<pre>
+기본실행
+ empty-cells : show;
+ border-collapse : separate;
+</pre>
+<table id="tab1" border="1">
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>8</td>
+    <td></td>
+  </tr>
+</table>
+
+<pre>
+ border-collapse : collapse;
+   각 td셀의 간격을 없애고 선을 합친다.
+ 
+ empty-cells : hide;
+  실행되지 않는다.
+</pre>
+<table id="tab2" border="1">
+  <tr> 
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>8</td>
+    <td></td>
+  </tr>
+</table>
+
+<pre>
+ empty-cells : hide; 
+   내용이 없는 td셀의 선을 보이지 않게 한다.
+  
+ border-spacing : 10px;
+   각 td셀의 간격을 부여한다.
+</pre>
+<table id="tab3" border="1">
+  <tr>
+    <td>히히</td>
+    <td>놀러</td>
+    <td>가고</td>
+  </tr>
+  <tr>
+    <td>싶어</td>
+    <td>집도</td>
+    <td>가고</td>
+  </tr>
+  <tr>
+    <td>싶엉</td>
+    <td>웩</td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

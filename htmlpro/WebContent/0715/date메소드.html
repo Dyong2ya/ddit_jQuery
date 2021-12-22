@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+function proc1() {
+	today = new Date();
+	
+	day = today.getDay();
+	
+	str = today.toLocaleString() + "<br>";
+	
+	switch(day){
+	case 0 : 
+		str += "일요일";	
+		break;
+	case 1 : 
+		str += "월요일";
+		break;
+	case 2 : 
+		str += "화요일";
+		break;
+	case 3 : 
+		str += "수요일";
+		break;
+	case 4 : 
+		str += "목요일";
+		break;
+	case 5 : 
+		str += "금요일";
+		break;
+	case 6 : 
+		str += "토요일";
+		break;
+	}
+	
+	document.getElementById('result1').innerHTML = str;
+}
+
+function proc2() {
+	 days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+	 
+	 //date객체 생성
+	 today = new Date();
+	 
+	 //date객체변수로 요일을 구하는 메서드를 호출한다.
+	 a = today.getDay(); //a가 0.1.2.3.4.5.6
+	 
+	 //호출한 메서드의 결과값(0,1,2,3,4,5,6)에 해당하는 배열요소값을 출력한다
+	 week = days[a];
+	 
+	 //출력내용
+	 str = "오늘은 " + today.toLocaleString();
+	 str += week + "입니다";
+	 
+	 document.getElementById('result2').innerHTML = str;
+}
+
+function proc3() {
+	//태어난 날을 Date객체로 생성
+	bday = new Date(1995, 1, 18); //("1994.4.2")이렇게 쓸 수도 있다.
+	
+	//오늘을 Date객체로 생성
+	today = new Date();
+	
+	//각 Date객체변수로 getTime()메소드를 호출
+	times = today.getTime() - bday.getTime();
+	console.log(times); //F12누르고 사용하는 코솔창에 출력된다.
+	
+	//실제초, 분, 시, 날, 년
+	sec = times / 1000;
+	console.log("sec => " + sec);
+	
+	min = sec / 60;
+	console.log("min => " + min);
+	
+	hour = min / 60;
+	console.log("hour => " + hour);
+	
+	day = hour / 24;
+	console.log("day => " + day);
+	
+	year = day / 365;  // => times/1000/60/60/24/365; 사실 이거 하나만 있어도 돼.
+	console.log("year => " + year);
+	
+	yy = times/1000/60/60/24/365;
+	
+	//출력내용
+	str = "생년월일 : " + bday.toLocaleString(); +"<br>";
+	str += yy + "년 째입니다"
+		
+	//출력
+	 document.getElementById('result3').innerHTML = str;	
+}
+
+function proc4() {
+	//today = 
+	today = new Date();
+	
+	//cday = 
+	cday = new Date(2021,12-1,25);
+	
+	//경과시간 구하기
+	times = cday.getTime() - today.getTime();
+	sec = times / 1000;
+	console.log("sec => " + sec);
+	
+	min = sec / 60;
+	console.log("min => " + min);
+	
+	hour = min / 60;
+	console.log("hour => " + hour);
+	
+	day = hour / 24;
+	console.log("day => " + day);
+	
+	year = day / 365;  
+	console.log("year => " + year);
+	
+	yy = times/1000/60/60/24; //1년도 안 남아서 /365 안 해도 돼
+
+	//출력내용
+	str = "오늘 : " + today.toLocaleDateString() +"<br>";
+	str += yy + "일 남았습니다."
+		
+	//출력
+	 document.getElementById('result4').innerHTML = str;	
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">  
+요일구하기 : getDay()<br>
+0(일요일) ~ 6(토요일) 사이의 값을 리턴한다.<br><br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+요일구하기 : getDay()<br>
+0(일요일) ~ 6(토요일) 사이의 값을 리턴한다.<br>
+배열을 이용  days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"]<br><br>
+<input type="button" value="확인" onclick="proc2()">
+<br><br>
+<div id="result2"> </div>
+</div> 
+
+<div class="box">  
+경과시간구하기 - 과거 ~ 현재 <br>
+getTime() : millisecond값을 리턴한다<br>
+리턴된 millisecond값을 실제 사용하는 초로 변경하기 위해서 1000으로 나눈다<br>
+태어난 날로부터 현재까지 경과한 날구하기<br><br>
+<input type="button" value="확인" onclick="proc3()">
+<br><br>
+<div id="result3"> </div>
+</div>   
+
+<div class="box">  
+경과시간구하기 - 현재 ~ 미래 <br>
+getTime() : millisecond값을 리턴한다<br>
+크리스마스까지 며칠 남았는지 구하기<br><br>
+<input type="button" value="확인" onclick="proc4()">
+<br><br>
+<div id="result4"> </div>
+</div>   
+</body>
+</html>

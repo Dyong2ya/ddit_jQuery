@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+	$('#btn1').on('click', function() {
+		$('#result1').remove();	
+	})
+	$('#btn2').on('click', function() {
+		$('#result2').empty();	
+	})
+	$('#btn3').on('click', function() {
+		$('#result3 p').remove('.p1');	
+	})
+})
+</script>
+
+<style>
+.aa{
+  background: yellow;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">  
+    삭제하기<br>
+  remove()<br>
+  empty()<br><br>
+<input type="button" value="remove" id="btn1">
+<input type="button" value="empty" id="btn2">
+<input type="button" value="remove_class" id="btn3">
+<br><br>
+<div class="aa" id="result1">
+  <p>무궁화 꽃이 피었습니다1</p>
+</div>
+
+<div class="aa" id="result2">
+  <p>무궁화 꽃이 피었습니다2</p>
+</div>
+
+<div class="aa" id="result3">
+  <p class="p1">무궁화 꽃이 피었습니다3-1</p>
+  <p class="p2">무궁화 꽃이 피었습니다3-2</p>
+  <p class="p3">무궁화 꽃이 피었습니다3-3</p>
+</div>
+</div>   
+</body>
+</html>

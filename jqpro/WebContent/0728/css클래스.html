@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+$(function() {
+//	$('result1 p').click(function() { })
+//	$('result1 p').bind(function() { })
+	$('#result1 p').on('click', function() {
+		$(this).toggleClass('fontincre')
+	})
+	//$('p', '#result1') 
+	
+	$('#result2 p').on('mouseover', function() {
+		$(this).addClass('backcolor');
+	})
+	$('#result2 p').on('mouseout', function() {
+		$(this).removeClass('backcolor');
+	})
+	
+/*	$('#result3 img').on('mouseover', function() {
+		$(this).addClass('imgborder');
+	})
+	$('#result3 img').on('mouseout', function() {
+		$(this).removeClass('imgborder');
+	})	*/
+	$('#result3 img').hover(function(){  //hover는 2개의 function을 넣을 수 있엉
+		$(this).addClass('imgborder');
+	}, function(){ 
+		$(this).removeClass('imgborder');
+	})
+	
+	$('#result4 p').hover(function(){
+		//mouseover
+		if( $(this).hasClass('aa') ){
+			$(this).addClass('fontincre');
+		}else{
+			$(this).addClass('backcolor');
+		}
+	}, function(){ 
+		//mouseout
+		if( $(this).hasClass('fontincre')){
+			$(this).removeClass('fontincre');
+		}else if ( $(this).hasClass('backcolor')){
+			$(this).removeClass('backcolor');
+		}
+		$(this).removeClass('fontincre');
+	})
+})
+</script>
+
+<!--클래스를 미리 만들어놓고 위에서 적용시키는 거야. addClass나 removeClass안에 넣을 때-->
+<style> 
+.fontincre{
+	font-size :  2.0em;
+}
+.backcolor{
+  	background : lime;
+}
+#result1 p:hover{
+	background: pink;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+.imgborder{
+	border: 2px solid red;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">  
+	css 관련 메서드<br><br>
+	<div id="result1">
+	  <p class="p1">무궁화 꽃이 피었습니다1</p>
+  	  <p class="p2">무궁화 꽃이 피었습니다2</p>
+  	  <p class="p3">무궁화 꽃이 피었습니다3</p>
+	</div>
+</div>   
+
+<div class="box">  
+	css 관련 메서드<br><br>
+	<div id="result2">
+	  <p class="p1">무궁화 꽃이 피었습니다1</p>
+  	  <p class="p2">무궁화 꽃이 피었습니다2</p>
+  	  <p class="p3">무궁화 꽃이 피었습니다3</p>
+	</div>
+</div> 
+
+<div class="box"> 
+	css 관련 메서드<br><br>
+	img에 mouseover실행시와 mouseout실행 시 테두리 설정<br>
+	addClass와 removeClass를 이용한다<br><br>
+	<div id="result3">
+	    <img src="../images/쭈굴어피치.png" alt="쭈굴어피치.png">
+	    <img src="../images/스티치.png" alt="스티치.png">
+	    <img src="../images/라이언.png" alt="라이언.png">
+	    <img src="../images/스누피.png" alt="스누피.png">
+	</div>
+</div>  
+
+<div class="box"> 
+	css 관련 메서드<br><br>
+	<div id="result4">
+	  <p class="aa">무궁화 꽃이 피었습니다1</p>
+  	  <p>무궁화 꽃이 피었습니다2</p>
+  	  <p>무궁화 꽃이 피었습니다3</p>
+	</div>
+</div>  
+</body>
+</html>

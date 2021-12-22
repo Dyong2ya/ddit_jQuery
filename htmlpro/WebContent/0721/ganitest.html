@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+	<style type="text/css">
+		body{
+			margin: auto;
+		}
+		img{
+			width : 200px;
+			height : 200px;
+			margin: auto;
+		}
+		.box{
+			height : 300px;
+			max-width : 1200px;
+			min-width : 1200px;
+			margin: auto;
+		}
+		div div{
+		background : Cornsilk;
+		border-radius : 15px;
+		float : left;
+		max-width : 200px;
+		min-width : 200px;
+		height : 250px;
+		}
+		
+	</style>
+	
+	
+	<script type="text/javascript">
+		/* window.onload = function(){ // 이 스크립트가 하단으로 내려간다면, window.onload 코딩이 없어도 된다.
+		imgs = document.querySelectorAll('.ci')
+		for(i =0 ; i < imgs.length; i++){
+			imgs[i].addEventListener('click', fnClick);
+		}
+		}
+		function fnClick(){
+			alert(this.getAttribute('src'));
+			proc1(this)
+		} */
+		
+		function proc1(th){
+			
+			ptag = th.parentNode.querySelector('p');			
+			if(ptag != null){
+				th.parentNode.removeChild(p);
+			}
+			
+			vsrc = th.getAttribute("src");
+			text = vsrc.slice(vsrc.lastIndexOf('/')+1, vsrc.lastIndexOf('.'));
+			
+			ptag = document.createElement('p');
+			ptag.innerHTML = text;
+			
+			th.parentNode.appendChild(ptag);
+			th.setAttribute('onclick', " ");
+		}
+		
+	</script>
+</head>
+<body>
+	<pre>
+	onclick을 통한 이벤트 직접 등록
+	</pre>	
+	<div class="box">
+		<div class="img">
+			<img src="../images/산.PNG" alt="산.PNG" onclick="proc1(this)">
+		</div>
+		
+		<div class="img">
+			<img src="../images/산.PNG" alt="산.PNG" onclick="proc1(this)">
+		</div>
+		
+		<div class="img">
+			<img src="../images/산.PNG" alt="산.PNG" onclick="proc1(this)">
+		</div>
+		
+		<div class="img">
+			<img src="../images/산.PNG" alt="산.PNG" onclick="proc1(this)">
+		</div>
+
+	</div>
+	
+	
+	<pre>
+	이미지에 대한 일괄 이벤트 등록 - 스크립트 에서
+	class = "ci" 인 요소를 검색한다.
+	검색요소.addEventListener('click', function(){})
+	window.onload = function(){
+		imgs = document.querySelectorAll('.ci')
+		for(i =0 ; i &lt;imgs.length; i++){
+			imgs[i].addEventListener('click', fnClick);
+		}
+	</pre>
+	<div class="box">
+		<div class="img">
+			<img class="ci" src="../images/개.jpg" alt="개.jpg">
+		</div>
+		
+		<div class="img">
+			<img class="ci"  src="../images/개.jpg" alt="개.jpg">
+		</div>
+		
+		<div class="img">
+			<img class="ci"  src="../images/개.jpg" alt="개.jpg">
+		</div>
+		
+		<div class="img">
+			<img class="ci"  src="../images/개.jpg" alt="개.jpg">
+		</div>
+
+	</div>
+</body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ div{
+   width : 200px;
+   height : 200px;
+   border : 5px solid blue;
+   dispay : none;
+ }
+ img{
+   width : 100%;
+   height : 100%;
+ }
+</style>
+
+<script>
+ function show() {
+	//html요소 div에 접근 검색
+	var vd = document.getElementsByTagName('div')[0]; /*var, let 또는 아예 안 써도 상관없다.*/ /*Elements가 복수라서 [0]을 지정해주지 않으면 vd는 배열을 의미하게 되므로 충돌됨*/
+	
+	//div요소에 style을 설정
+	vd.style.display = 'block';
+}
+ function hide() {
+    //html요소 div에 접근 검색
+	var vd = document.getElementsByTagName('div')[0]; /*var, let 또는 아예 안 써도 상관없다.*/ /*Elements가 복수라서 [0]을 지정해주지 않으면 vd는 배열을 의미하게 되므로 충돌됨*/
+		
+	//div요소에 style을 설정
+	vd.style.display = 'none';
+}
+</script>
+</head>
+<body>
+  <input type="button" value="보이기" onclick="show()">
+  <input type="button" value="감추기" onclick="hide()">
+  
+  <br><br>
+  <div>
+    <img src="../images/Penguins.jpg">
+  </div>
+</body>
+</html>

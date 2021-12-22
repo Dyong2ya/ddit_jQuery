@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+</style>
+<script>
+
+function proc1() {
+	  //입력
+	  str="";
+	  score=prompt("점수를 입력하세요")
+
+	  switch(parseInt(score/10)){
+	  case 10:
+		  str = "A";
+		  break;
+	  case 9 : 
+		  str = "B";
+		  break;
+	  case 8:
+		  str = "C";
+		  break;
+	  case 7 : 
+		  str = "D";
+		  break;		  
+	default:
+		str = "F";
+		break;
+	}
+	  //출력위치 
+	  res = document.getElementById('result1');
+	  
+	  //출력
+	  res.innerHTML = str; 
+}
+</script>
+</head>
+<body>
+<pre>
+<!-- 점수를 입력받는다 - prompt이용 - 0~100사이 -->
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1">
+
+</div>
+<!-- 점수에 대한 학점 구하기 -->
+</pre>
+</body>
+</html>

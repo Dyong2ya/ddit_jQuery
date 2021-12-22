@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+  function calc(){
+	  var price = parseInt(document.getElementById('price').value);/*여기서 parseInt해줘서 밑에 더하기 할 때마다 parseInt안 써줘도 돼*/
+	  var su = parseInt(document.getElementById('su').value) ;
+	  
+	  var multi = price * su;
+	  var sum = price + su;
+	  
+	  alert(multi + "," + sum);
+  }
+</script>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+</head>
+<body>
+<pre>
+전송기능의 Button: 
+ &lt;button>전송&lt;/button>
+ &lt;button type="submit">전송&lt;/button>
+ 
+ 전송하지 않는 Button: 
+ onclick="함수호출()"으로 기능을 부여한다.
+ &lt;botton type="button" onclick="calc()">계산 &lt;/button>
+</pre>
+  <form action="buttonsumit.jsp" method="post">
+      가격<input type="text" name="price" id="price"><br>
+      수량<input type="text" name="su" id="su"><br>
+   <button type="button" onclick="calc()">계산</button>
+   <button>전송</button>
+   <button type="submit">전송</button>
+  </form>
+</body>
+</html>

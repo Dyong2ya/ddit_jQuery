@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+proc1 = () => {
+	res = "protocol : " + location.protocol + "<br>";
+	res += "host : " + location.host + "<br>";
+	res += "hostname : " + location.hostname + "<br>";
+	res += "port : " + location.port + "<br>";
+	res += "pathname : " + location.pathname + "<br>";
+	res += "href : " + location.href + "<br>";
+	
+	
+	document.getElementById('result1').innerHTML = res;
+	
+	setTimeout(function(){ 
+		location.href = "http://www.naver.com"; //1초 있다가 네이버 페이지로 이동됨
+		
+	},1000)
+}
+
+//onclick버튼 클릭
+function proc2() {
+	location.href = "test.jsp?name=홍길동";
+}
+//a href="javascript:goPage()"
+goPage = () => {
+	location.href = "test.jsp?name=개나리";
+}
+//새로운 페이지로 대체한다.
+proc3 = (hr) => {
+	location.replace(hr);
+	
+}
+
+function proc4() {
+	//result4에 문자열을 출력 - 문자열 배열,
+	//배열의 인덱스를 랜덤으로 발생한다.
+	arr = ["Hello", "Happy", "Good", "둥근 해가 떴습니다", "메리크리스마스", "맛있는 점심"]
+	ran = parseInt(Math.random()*arr.length);
+	//arr[ran]
+	
+	document.getElementById('result4').innerHTML = arr[ran];
+	document.getElementById('result4').style.color = "red";
+	document.getElementById('result4').style.font = "2.0em";
+	
+	//3초 후에 원래 페이지로 돌아온다.
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">  
+Location 객체<br>
+url의 정보<br>
+<br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+Location 객체<br>
+url의 정보<br>
+<br>
+<input type="button" value="페이지이동" onclick="proc2()">
+<br>
+<br>
+<input type="button" value="href" onclick="location.href='test.jsp?name=진달래';">
+<br>
+<br>
+<a href ="http://www.naver.com">naver 페이지 이동</a>
+<br>
+<a href ="javascript:goPage()">script 페이지 이동</a> <!-- a태그는 function을 호출할 수도 있는데 이 때는  javascript: 이거 써줘야 돼.-->
+<br>
+<div id="result2"> </div>
+</div>   
+
+<div class="box">  
+Location 객체<br>
+url의 정보<br>
+새로운 문서로 대체<br>
+<br>
+<input type="button" value="replace" onclick="proc3('test.jsp?name=무궁화')"><!-- replace수행하면 절대 원래 페이지로 돌아올 수 없음 -->
+<br><br>
+<div id="result3"> </div>
+</div>   
+
+<div class="box">  
+Location 객체<br>
+url의 정보<br>
+새로운 문서로 대체<br>
+<br>
+<input type="button" value="reload" onclick="proc4('test.jsp?name=무궁화')"><!-- reload수행하면 자동으로 다시 돌아온다 -->
+<br><br>
+<div id="result4"> </div>
+</div>   
+</body>
+</html>

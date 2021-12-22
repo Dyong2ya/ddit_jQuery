@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function() {
+	imgs = document.querySelectorAll('.ci');
+	for(i=0; i<imgs.length; i++){
+		imgs[i].addEventListener('click', fnClick);
+	}
+}
+
+function fnClick() {
+	alert(this.getAttribute('src'));
+}
+timg = null;
+
+function proc1(t) {
+	
+	timg = t.parentNode.querySelector('p');
+	console.log(timg);
+	
+	if(timg != null)
+		t.parentNode.removeChild(timg);
+	
+	
+	
+// 	t.parentNode.remove(); //사진 없애버려...
+	
+	
+	//img태그의 속성 src 값을 가져온다 - 
+	vsrc = t.getAttribute('src');
+	
+	timg = document.createElement('p'); //태그이름을 받는 거
+	
+	start = vsrc.lastIndexOf("/") + 1;
+	end = vsrc.lastIndexOf("."); 
+	
+	//vrsc.substring(start, end)
+	timg.innerHTML = vsrc.substring(start, end);
+	
+	t.parentNode.appendChild(timg); //img div timg를 넣어
+
+}
+</script>
+<style>
+body{
+	width: 100%;
+	min-width: 1800px;
+}
+.box{
+  position : absolute;
+  left : 50%;
+  top : 50%;
+  transform : translate(-50%, -50%);
+  border : 1px solid red;
+  width : 1400px;
+}
+.div{
+  border : 1px solid blue;
+  width : 300px;
+  height : 700px;
+  margin : 5px;
+  padding : 10px;
+  float : left;
+  display: inline-block;
+}
+img{
+  width : 100%;
+  height : 80%;
+}
+p{
+  margin-top : 50px;
+  text-align : center;
+}
+
+</style>
+</head>
+<body>
+<pre>
+<!-- 이미지태그에 직접 이벤트를 부여 -->
+<!-- &lt;omg onclick="proc1() -->
+</pre>
+<div class="box">  
+  <div class="div">
+    <img src="../images/바위_좌.PNG" alt="바위_좌.PNG" onclick="proc1(this)">
+    <p>졌넹</p>
+  </div>
+  
+  <div class="div">
+    <img src="../images/보_우.PNG" alt="보_우.PNG" onclick="proc1(this)">
+    <p>이겼넹</p>
+  </div>
+  
+  <div class="div">
+    <img src="../images/가위_좌.PNG" alt="가위_좌.PNG" onclick="proc1(this)">
+    <p>졌엉ㅜㅜ</p>
+  </div>
+  
+  <div class="div">
+     <img src="../images/바위_우.PNG" alt="바위_우.PNG" onclick="proc1(this)">
+     <p>이겨쓰~</p>
+  </div>
+  
+</div>   
+
+<pre>
+이미지에 대한 일괄 이벤트 등록 - script에서 
+class="ci"에서 요소를 검색
+검색요소.addEventListner('click', function이름)
+
+</pre>
+<div class="box">  
+  <div class="div">
+    <img src="../images/바위_좌.PNG" class="ci" alt="바위_좌.PNG">
+    <p>졌넹</p>
+  </div>
+  
+  <div class="div">
+    <img src="../images/보_우.PNG" class="ci"  alt="보_우.PNG">
+    <p>이겼넹</p>
+  </div>
+  
+  <div class="div">
+    <img src="../images/가위_좌.PNG" class="ci"  alt="가위_좌.PNG">
+    <p>졌엉ㅜㅜ</p>
+  </div>
+  
+  <div class="div">
+     <img src="../images/바위_우.PNG" class="ci"  alt="바위_우.PNG">
+     <p>이겨쓰~</p>
+  </div>
+  
+</div>   
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+</head>
+<body>
+<pre>
+  &lt;textarea>&lt;/textarea>
+  여러줄의 text를 입력
+  
+  서버에서 처리 후 브라우저에 출력 시 한줄로 나타난다.
+  출력 시 여러줄로 표시하기 위해서 자바에서(jsp)처리를 해야 한다.
+  
+</pre>
+
+  <form action="area.jsp" method="post">
+       이름<input name="name"><br>  <!--input은 생략하면 text야-->
+   
+   <br>   
+       소개<br>
+   <textarea rows="10" cols="50" name="area"></textarea>
+   
+   <br><br>
+   <button>전송</button>
+  </form>
+</body>
+</html>

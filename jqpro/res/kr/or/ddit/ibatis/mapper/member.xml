@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="member"><!-- id가 중복되어도 구별가능해져 얘떄문에 -->
+
+<!-- insert 연습 -->
+<insert id="insertMember" parameterClass="kr.or.ddit.member.vo.MemberVO"> <!--  parameterClass 이건 사실 mv넘어오면 알 수 있어서 생략가능하다-->
+	insert into mymember
+		(mem_id, mem_name, mem_tel, mem_addr, mem_email)  <!-- 테이블 컬럼이름 근데 컬럼 다 가져올거라서 이거 지워도 돼-->
+		values (#mem_id#,#mem_name#,#mem_tel#,#mem_addr#,#mem_email#) <!-- VO에 있는 변수이름들 gettersetter있어서 어떤 형식인지 알려줄라공 -->
+		
+		<selectKey keyProperty="mem_id" resultClass="string">
+			select mem_id from mymember where mem_id = #mem_id#
+		</selectKey>
+</insert>	
+
+<select id="selectAllMember" resultClass="memVO">
+	select * from mymember
+</select>
+
+</sqlMap>			
+
+
+
+
+

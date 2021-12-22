@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+   
+  <style>
+  div{   /*정적인 스타일이야*/
+    width : 550px;
+    height: 150px;
+    border : 3px solid orange;
+    
+    margin : 20px;
+    padding : 20px;
+  }
+  </style>
+      
+    <script>
+    
+    window.onload =  function() {
+  	var now = new Date();
+	var now2 = now.toLocaleString();
+	var now3 = now.toLocaleDateString();
+ 	var now4 = now.toLocaleTimeString();
+	
+  	//출력장소 : div에 접근검색하게 만들고 싶어
+ 	var vd = document.getElementsByTagName('div')[0]/*배열*/
+ 	
+ 	//출력 정보 작성
+ 	 var str = "new Date() => " + now + "<br>";
+ 	 str += "now.toLocaleString() => " + now2 + "<br>";  
+	 str += "now.toLocaleDateString() => " + now3 + "<br>";
+	 str += "now.toLocaleTimeString() => " + now4;
+	 
+	 //출력
+	 vd.innerHTML = str;
+  	 }
+  </script>
+</head>
+<body>
+<pre>
+script가 먼저 실행되어 html요소를 검색하고자 한다면 오류가 발생
+script가 먼저 기술되었지만 나중에 실행하도록 설정해야 한다.
+그래야만 html요소에 접근검색이 가능하다.
+
+<!-- document에 생성되고 브라우저가 보여지는데 윈도우 컨테이너에 뜨는 건데 이 상태까지가 window.onload이다. -->
+window.onload = function() {
+
+}
+</pre>
+  <br>
+  <br>
+  <img src="../images/단풍.jpg" alt="단풍.jpg">
+  <br>
+  <div></div>
+  
+</body>
+</html>

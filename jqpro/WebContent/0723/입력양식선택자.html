@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+   $(function() {
+      
+      // form 안에서 submit 이 발생했을 때 
+      $('form').on('submit', function() {
+         
+         // 입력한 name과 pass 값 가져오기
+         
+         
+         // 자바스크립트 
+         
+         idvalue = document.getElementsByName('id')[0].value;
+         passvalue = document.getElementsByName('pass')[0].value;
+         
+         
+         
+         
+         // JQuery
+         
+         idvalue = $('input[name=id]').val();
+         passvalue = $('input[name=pass]').val();
+         
+         // input:속성 .. 일케!
+         idvalue = $('input:text').val();
+         passvalue = $('input:password').val();
+         
+         
+         console.log(idvalue, passvalue);
+         
+         
+      })
+      
+      
+      
+      $('#btn1').on('click', function() {
+         
+         // 문서 전체를 대상 (모든 input - button, textarea ..!! 다 !!)
+         // $(":input").css('border', '2px solid crimson');
+         
+         // input type=button 만 선택 !
+         $(":button").css('border', '2px solid crimson');
+         
+         
+         
+      })
+      
+      
+      
+            
+      $('#btn2').on('click', function() {
+         
+         // input  요소 테두리 lime , 배경색  핑크
+         // $('input').css('border', '2px solid maroon').css('background-color', 'olive');
+         
+         $('input').css({
+               
+            "border" : "2px solid maroon",
+            "background-color" : "olive"
+            
+         });
+         
+         
+         // input   type이 button 인 요소 배경색 teal
+         $('#result1 input:button').css('background-color', 'teal');
+         
+         // Button  요소와 input type이 button 인 요소 배경색 하늘색
+         $('button, #result1 input:button').css('background-color', 'lightblue');
+         
+         // Type이 submit 요소의 배경색 녹색
+         $('input:submit').css('background-color', 'green');
+         
+         // Type이 reset인 요소의 배경색 주황 
+         $('input:reset').css('background-color', 'orange');
+         
+         // Type이 text, password 인 요소의 테두리 파랑
+         $('input:text, input:password').css('border', '2px solid blue');
+         
+         // Type이 file, image인요소의 테두리 노랑
+         $('input:file, input:image').css('border', '4px solid yellow');
+
+
+         
+         
+         
+      })
+      
+   })
+
+
+</script>
+
+
+<style type="text/css">
+
+   span{ font-size: 1.2em;
+        background-color : maroon;
+        color:white;}
+
+</style>
+
+</head>
+<body>
+
+
+   <div class="box">  
+   
+      <br>
+      <strong>확인1 버튼 클릭</strong> <br>
+      $(':input') : 문서의 모든 엘리먼트를 선택 <br>
+      $(':button') : button요소와 input type=button 인 요소 선택 <br><br>
+      
+      <strong>확인2 버튼 클릭 </strong><br>
+      input  요소 테두리 lime , 배경색  핑크<br>
+      input   type이 button 인 요소 배경색 노란<br>
+      Button  요소와 input   type이 button 인 요소 배경색 하늘색<br>
+      Type이 submit 요소의 배경색 녹색<br>
+      Type이 reset인 요소의 배경색 노랑 <br>
+      Type이 text, password 인 요소의 테두리 파랑<br>
+      Type이 file, image인요소의 테두리 빨강 <br><br>
+      
+      <input type="button" value="확인1" id="btn1">
+      <input type="button" value="확인2" id="btn2">
+      <br><br>
+      
+      <div id="result1"> 
+      
+      <pre>
+      
+      전송 버튼, submit 버튼, 이미지를 클릭하면  서버로 전송되지 않고 script 실행<br>
+      &lt;form <span>onsubmit='return false;'</span>> <br><br>
+      
+      스크립트에서 코딩<br>
+      $('form').on('submit', function() {}) 
+      
+      </pre>
+      
+      <br> <hr> <br>
+      
+      
+      <!-- onsubmit : submit 이 발생할 때  -->
+      <!-- 전송은 기본적으로 get 방식 -->
+      <form onsubmit='return false;'> 
+      
+         Text : <input type="text" name="id"/><br> 
+         Password : <input type="password" name="pass"/><br><br> 
+         
+         Radio : 
+         <input type="radio" name="radioGroup" id="radioA" value="A"/> A 
+         <input type="radio" name="radioGroup" id="radioB" value="B"/> B<br><br> 
+         
+         Checkbox : 
+         <input type="checkbox" name="checkboxes" id="checkbox1" value="1"/> 1 
+         <input type="checkbox" name="checkboxes" id="checkbox2" value="2"/> 2<br><br> 
+         
+         Textarea : <br> 
+         <textarea rows="15" cols="50" id="myTextarea" id="myTextarea"></textarea><br><br> 
+         
+         Image : <input type="image" src="../images/쭈굴어피치.png" width="100px"><br><br> 
+         
+         File : <input type="file"><br><br> 
+         
+         Buttons : 
+         <button> 전송 </button> <!-- 얜 타입 없음 -->
+         <button type="button" id="normalButton">Normal</button> 
+         <button type="submit" id="submitButton">Submit</button> 
+         <button type="reset" id="resetButton">Reset</button> <br><br>
+         
+         
+         <input type="button" value="일반버튼"> 
+         <input type="submit" value="전송버튼"> 
+         <input type="reset" value="초기화버튼"> <br><br>
+         
+      </form>
+      
+      
+      
+      </div>
+   
+   </div>
+   
+</body>
+</html>

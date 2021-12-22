@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png"/> <!-- 이거 인터넷화면 띄위ㅆㄴ을 때 나오는 그 화면 동그라미.....보면 알아 -->
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+<style>
+p{
+  color : red;
+}
+</style>
+<script>
+
+window.onload = function(){ //윈도우가 있어서 위치는 상관없어. 그냥 먼저 실행되는 거야.
+	  //p태그로 접근검색
+	   //ptag = document.getElementsByTagName('p')[0]; //change클릭할 때마다 검색되어 지는거야.  --변수 앞에 var를 붙이면 지역변수, 없으면 전역변수 이거 왜 해주냐면 클릭할 때 마다 불러오기 보다 그냥 전역으로 한 방에
+	   ptag = document.querySelectorAll('p');
+}  
+	  
+	function change() {
+	  cr = Math.floor(Math.random()*256);
+	  cg = Math.floor(Math.random()*256);
+	  cb = Math.floor(Math.random()*256);
+		
+	  size = Math.floor(Math.random()*50 + 30);
+	  
+	  ptag.style.color = "rgb(" + cr + "," + cg + "," + cb +")";
+	  ptag.style.fontSize = size + "px";
+}
+	
+	
+</script>
+</head>
+<body>
+<pre>
+버튼을 클릭하면 글자색과 사이즈를 동적으로 변경
+Math.random()을 이용
+
+script에서 html요소 접근하기 <!-- 배열에서 원하는 값을 가려올 수 있음 -->
+document.getElementById('id이름')
+document.getElementByClassName('class이름')
+document.getElementByTagName('tag이름')
+
+es6 <!-- 어차피 [0]번째밖에 못 받아서 못 써 -->
+document.querySelector('#id이름')
+document.querySelector('.class이름')
+document.querySelector('tag이름')
+
+<!-- 어차피 All이라서 []못 써 -->
+document.querySelectorAll('.class이름')
+document.querySelectorAll('tag이름')
+</pre>
+  <input type="button" value="확인" onclick="change()"><br>
+  <p>Hello~~Java Script</p>
+</body>
+</html>

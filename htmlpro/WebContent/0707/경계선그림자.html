@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  div{
+    border-style : solid;
+    border-color : blue;
+    margin : 10px;
+    padding : 20px;
+    
+    width : 50%;
+    height : 50px;
+    background : lightblue;
+  }
+  #d1{
+    box-shadow : 40px 30px 5px lightgray; /*옆으로 아래로 숫자가클수록흐려*/
+  }
+  #d2{
+    height : 150px;
+    margin-top : 100px;
+    //background-image : url(../images/그림.jpg);
+    background-image : linear-gradient(skyblue,white); /*위에서 밑으로 색섞는 거*/
+  }
+  #d3{
+    height : 150px;
+    background-image : linear-gradient(to right, yellowgreen, pink);
+  }
+  #d4{
+    height : 150px;
+    background-image : linear-gradient(45deg, blue, orange); /*-를 주게 되면 반대로 된다*/
+  }
+  #d5{
+    height : 150px;
+    background-image : radial-gradient(red, yellow, blue);
+  }
+  #d6{
+    height : 150px;
+    background-image : radial-gradient(red 15%, yellow 30%, blue 55%);
+  }
+  
+</style>
+</head>
+<body>
+  <div id="d1"></div>
+  <div id="d2"></div>
+  <div id="d3"></div>
+  <div id="d4"></div>
+  <div id="d5"></div>
+  <div id="d6"></div>
+</body>
+</html>

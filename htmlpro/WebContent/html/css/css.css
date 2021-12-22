@@ -1,0 +1,187 @@
+body{
+	width: 100%;
+	min-width: 1800px;
+}
+header{
+	width : 100%;
+	height : 102px;
+	background: lightgray;
+}
+header a{
+	color: black;
+	text-decoration : none;
+	position: relative;
+	top : 30px;
+}
+header img{
+	width : 90px;
+	height : 90px;
+	float : left;
+	margin : 10px 10px;
+}
+.div3{
+	float : left;
+}
+img{
+	width : 350px;
+	height : 350px;
+}
+#menu1{
+	border-top: 3px dotted olive;
+    border-bottom: 2px solid olive;
+	border-left : none;
+	border-right : none;
+	height : 40px;
+	margin : 10px auto;
+	padding : 20px;
+	list-style-type : none;
+}
+.top{
+	margin-right: 60px;
+	list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+	text-align : center;
+	float: left;
+    position: relative;
+	left : 17%;
+	padding : 10px;
+	letter-spacing: 8px;
+}
+.top a{
+	text-decoration : none;
+	color: blue;
+}
+#left{
+	background:skyblue;
+	width: 15%;
+    height : 600px;   
+    padding-top: 20px;
+    float: left;
+	box-sizing : border-box;
+}
+#left ul{
+	list-style : none;
+	line-height: 2.5;
+	background: #525d76;
+	padding : 0px;
+}
+#left li{
+	 background: skyblue;
+	 border-bottom : 1px solid blue;
+	 padding-left: 34px;
+}
+#left a{
+	color : white;
+	text-decoration : none;
+}
+#left a:hover{
+	color : yellow;
+}
+section{
+    width: 70%;
+    height : 600px;
+    float: left;
+}
+iframe{
+	width: 100%;
+    height : 600px;
+    border: none;
+	margin : 0 auto;
+	box-sizing : border-box;
+}
+.m{
+	width : 23%;
+	height : 590px;
+	border : 1px solid orange;
+	margin : 0px 12px;
+	padding : 10px;
+	float : left;
+	box-sizing : border-box;
+}	
+.m img{	
+	height: 278px;
+}
+video{
+	position: relative;
+	left : 20%;
+}
+#right{
+	width: 15%;
+	height : 600px;
+	background : skyblue;
+	padding: 20px;
+    margin-bottom: 10px;
+	float : right;
+	box-sizing : border-box;
+}
+#right a{
+	color : blue;
+}
+#right a:hover{
+	color : yellow;
+}
+footer{
+    background: black;
+    height: 80px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    clear: both;
+}
+#login{
+	position: relative;
+	top : 20%;
+}
+label{
+	width : 120px;
+	display : inline-block;
+}
+.loginfo{
+	margin : 3px;
+	width  : 150px;
+}
+.logbutton{
+	margin-top : 7px;
+	width : 100px;
+}
+#login a{
+	color : blue;
+	margin-top : 7px;
+}
+table{
+	border : 2px solid black;
+	border-collapse : collapse;
+	margin : 20px 0px;
+}
+caption{
+	text-decoration : underline;
+	color : red;
+	margin-bottom : 3px;
+}
+th{
+	width : 140px;
+	height : 30px;
+}
+.qtysum{
+	width : 200px;
+}
+td{
+	text-align : center;
+	height : 30px;
+}
+input[type=number]{
+	width : 180px;
+}
+.cartsum{
+	width : 180px;
+}
+input[type=text]{
+	margin-bottom : 3px;
+}
+input[type=date]{
+	width : 173px;
+}
+input[type=button]{
+	margin-top : 5px;
+}

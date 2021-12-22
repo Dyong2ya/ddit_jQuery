@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="mystyle.css">
+	<style>
+	   iframe {
+	      width : 60%;
+		  height : 500px;
+		  border : 1px dotted green;
+		  margin-left :   15%;
+	   }
+	   h1, p{
+		text-align : center;
+		border : 1px solid blue;
+		padding : 10px ;
+	   }
+	   a{
+	     margin-left :   5%;
+	   }
+	   strong{
+	     color : red;
+	   }
+	   div{
+	       //border : 1px solid blue;
+		   width : 60%;
+		   margin : 10px auto;
+		   //padding : 20px;
+		   text-align : center;
+	   }
+	   span{
+	      background-color : yellow;
+	   }
+	</style>
+  </head>
+  
+  <body>
+  <pre>
+    <span>iframe</span>은 웹페이지 안에 다른 웹페이지를 포함시키기 위하여 사용
+	<span>a링크</span>의 target속성에서 iframe의 name을 이용하여 문서를 포함시킨다 
+  
+    &lt;iframe src="아메리카노.html" <strong>name="ifr"</strong>>&lt;/iframe>
+	&lt;a href="아메리카노.html"  <strong>target="ifr"</strong>>아메리카노&lt;/a>
+	
+	<span>div</span> :  여러개의 요소를 한개의 블럭으로 묶어준다
+      자동으로 줄이바뀌는 블럭요소 , 화면에 물리적으로 보이지 않는다
+	
+	<span>span</span> : 텍스트를 분리하여 묶는다 
+	  인라인 요소 , 가로 세로 길이를 조절 할 수 없다
+	  
+    <span>padding</span> : 테두리 안쪽의 여백 , 테두리와 내용사이의 여백 	
+ 
+	
+  </pre>
+   <h1>iframe연습 </h1>
+   <p> iframe은 웹페이지 안에 다른 웹페이지를 포함시키기 위하여 사용 </p>
+   
+   <br>
+   <div>
+	   <a href="아메리카노.html"  target="ifr">아메리카노</a>
+	   <a href="카푸치노.html"  target="ifr">카푸치노</a>
+	   <a href="카페라떼.html"  target="ifr">카페라떼</a>
+	   <a href="에스프레소.html"  target="ifr">에스프레소</a>
+   </div>
+   
+   <br><br>
+   <iframe src="아메리카노.html" name="ifr"></iframe>
+ 
+   
+  </body>
+  
+</html>
+
+
+
+
+
+

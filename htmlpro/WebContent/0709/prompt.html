@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+  <style>
+  div{   /*정적인 스타일이야*/
+    width : 550px;
+    height: 150px;
+    border : 3px solid orange;
+    
+    margin : 20px;
+    padding : 20px;
+  }
+  </style>
+  
+  <script>
+  //함수정의 
+  function proc1() {
+	   var age = prompt("나이를 입력하세요");
+	   
+	   var vd = document.getElementsByTagName('div'); 
+	   
+	   //배열이라서
+	   vd[0].textContent = "당신은" + age + "살 이군용~";
+}
+  </script>
+</head>
+<body>
+<pre>
+  버튼을 클릭하면 prompt()함수를 이용하여 나이를 입력받아 출력한다.
+</pre>
+<input type="button" value="확인" onclick="proc1()"> <!-- proc1() : 함수호출 -->
+<div>
+
+</div>
+</body>
+</html>

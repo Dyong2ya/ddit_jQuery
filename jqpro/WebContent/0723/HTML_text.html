@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(function() {
+	$('#btn1').on('click', function() {
+		//alert($('body').html());  //.html로 해서 태그가 다 나와
+		
+		bh = $('body').html(); //가져오기 - 태그를 포함한 모든 문장을 가져온다
+		//$('#result1').text(bh); //출력하기 -- 태그가 포함돼서 달라↓
+		$('#result1').html(bh); //출력하기 -- 태그가 포함돼서 달라
+	})	  
+	
+	$('#btn2').on('click', function() {
+		//alert($('body').text());  //.html로 해서 태그가 다 나와
+		
+		bh = $('body').text(); //가져오기 - 글자만
+		//$('#result2').text(bh); //출력하기 --글자만 가져와서 두 개가 똑같아↓
+		$('#result2').html(bh); //출력하기--글자만 가져와서 두 개가 똑같아
+	})
+	
+	$('#btn3').on('click', function() {
+		//alert($('p').html());
+		
+		$('#result3').html($('p').html());
+		//$('#result3').text($('p').html());
+		
+	})
+	
+	$('#btn4').on('click', function() {
+		//alert($('p').text());	
+		
+		$('#result4').text($('p').text());   //$('#result4').text()--setter여기에 출력하세요			    $('p').text()--getter가져왔어여     
+	})
+	
+	$('#btn5').on('click', ()=> {
+		len = $('p').length; ///jQuery
+		len = document.getElementsByTagName('p').length; //script
+		
+		str="";
+		/*for(i=0; i<len; i++){
+			str += $('p').eq(i).html() + "<br>";      -- script반복문
+		}*/
+		$('p').each(function(i,obj) { //변수이름 그냥 아무거나 쓴거야 -- 그리고 p의 개수만큼 도는 거야
+		//$each($('p'), function(i,obj) { -- 이것처럼 써줘도 돼
+			str += $('p').eq(i).html() + "<br>";    
+			//str += $('obj').html() + "<br>";    
+			//str += $(this).html() + "<br>"; //p가 도는 걸 this로 받을 수 있는데 이걸 obj로도 받을 수 잇어 -- 근데 이런 경우에는 위의 function에서 i와 obj변수를 전혀 받지 않은 걸 의미해
+			
+		})
+		
+		//$('#result5').text(str);
+		$('#result5').html(str);
+	
+	})
+	
+  })
+</script>
+<style>
+	span {
+	  background: yellow;
+	}
+</style>
+</head>
+<body>
+
+<div class="box">  
+	$('body').html() : body 안의 모든 태그를 포함한 모든 문장 가져오기<br>
+	$('body').text() : body 안의 모든 문장만 가져오기<br>
+	<br>
+	<input id="btn1" type="button" value="html" >
+	<input id="btn2" type="button" value="text" >
+	<br><br>
+	<div id="result1"> </div>
+	<div id="result2"> </div>
+</div>  
+
+<div class="box">  
+	$('p').html() : 첫번 째 p태그를 대상으로 태그를 포함한 모든 문장 가져오기<br>
+					p가 여러 개인 경우 반복문을 사용한다
+	$('p').text() : 전체 p태그를 대상으로 모든 문장만 가져오기<br>
+	<br>
+	<input id="btn3" type="button" value="phtml" >
+	<input id="btn4" type="button" value="ptext" >
+	<input id="btn5" type="button" value="phtml-for문" >
+	<br><br>
+	
+	<p>1<span>홍길동</span></p>
+	<p>2<span>개나리</span></p>
+	<p>3<span>진달래</span></p>
+	
+	<div id="result3"> </div>
+	<div id="result4"> </div>
+	<div id="result5"> </div>
+</div>   
+</body>
+</html>

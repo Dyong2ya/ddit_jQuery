@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() { 
+	
+		
+		$('#btn1').on('click', function() {
+			
+			str = "";
+			
+			// 반복문
+			$.each($('p:hidden'), function() {
+				
+				// html(), text() 사용 (val() 은 input이 있을 때 사용하는거임!!)
+				str += $(this).html() + "<br>";
+				
+			})
+			
+			
+			$('#result1').html(str);
+
+		})
+		
+		
+		
+		$('#btn2').on('click', function() {
+			
+			str = "";
+			
+			// 반복문
+			$.each($('p:visible'), function() {
+				
+				// html(), text() 사용 (val() 은 input이 있을 때 사용하는거임!!)
+				str += $(this).html() + "<br>";
+				
+			})
+			
+			
+			$('#result2').html(str);
+
+		})
+	$('#btn3').on('click', function() {
+		//hidden
+		str ="** hidden 결과**<br>";
+		$('#testForm *:hidden').each(function() {
+			
+			console.log($(this).attr('name'), $(this).val());
+			if(this.tagName == 'INPUT'){  //비교할 땐 대문자로 써줘야 된다.
+				str += this.tagName + "의 hidden결과 : "   //this.tagName = input(태그이름)
+					+ $(this).attr('name') + " : " 			//attr jQuetry객체라서  $
+					+ $(this).val() + "<br>";				// 			"
+					
+			}else {
+				str += this.tagName + "의 객체 : " + $(this).text() + "<br>";  //this.tagName = span(태그이름)
+			}
+		})
+		
+		$('#result3').html(str);
+	})
+	
+	$('#btn4').on('click', function() {
+		
+		str ="** visible 결과**<br>";
+		$('#testForm *:visible').each(function() {
+			
+			console.log($(this).attr('name'), $(this).val());
+			if(this.tagName == 'INPUT'){  //비교할 땐 대문자로 써줘야 된다.
+				vtype = $(this).attr('type'); //input
+				if(vtype == 'radio'){
+					if($(this).prop('checked')){ //radio
+						str += $(this).attr('name') + " : " +  //radio상태에서 checked되어 있는 거
+						$('input[type=radio]:checked').val() + "<br>";
+					}
+
+				}else{
+					str += this.tagName + "의 hidden결과 : " 
+					+ $(this).attr('name') + " : " 			//attr jQuetry객체라서  $
+					+ $(this).val() + "<br>";				// 			"
+				}
+				
+				
+			}else if(this.tagName != "BR"){
+				str += this.tagName + "의 객체 : " + $(this).text() + "<br>";
+			}
+		})
+		
+		$('#result4').html(str);
+	})
+	})
+
+
+</script>
+
+</head>
+<body>
+<pre>
+html요소의 상태값 가져오거나 설정한다 - prop()
+checked, multiple, disabled, readonly, selected의 상태
+리턴값은 true / false
+
+  a.prop('checked') - checked상태값을 가져온다 -    //a는 태그값이야
+  a.prop('checked', true) - checked상태값을 설정한다.
+  a.prop('checked', false) - checked상태값을 해제한다.
+  
+</pre>
+
+	<div class="box">  
+	
+	
+		<input type="button" value="hidden" id="btn1" >
+		<input type="button" value="visible" id="btn2" >
+		
+		<br><br>
+
+		  <p> 보이는 문단</p>
+		  <p style="visibility:hidden;">숨겨진 문단</p>
+		  <p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+		  <p style="opacity:0;"> 투명한 문단</p>		
+	
+	
+		<div id="result1"> </div>
+		<div id="result2"> </div>
+		
+	</div>
+	
+	
+	<div class="box">  
+	
+	
+		<input type="button" value="hidden" id="btn3" >
+		<input type="button" value="visible" id="btn4" >
+		<br><br>
+	
+		<form id="testForm"> ​
+			<input type="hidden" name="userAge" value="33">​
+			<input type="hidden" name="userCity" value="대전">
+			​
+			I D : <input type="text" name="userID" value="hong">  ​
+			<span style="display:none">ID가 중복됩니다. </span> <br>  
+			​
+			이름 : <input type="text" name="userName" value="홍길동">   ​
+			<span style="visibility:hidden">이름을 입력하세요</span><br> 
+			 ​
+			성별 : <input type="radio" name="sung" value="남" checked="checked">남자  ​
+			<input type="radio" name="sung" value="여">여자  ​
+		</form>
+		<div id="result3"> </div>
+		<div id="result4"> </div>
+		
+	</div>
+	
+</body>
+</html>

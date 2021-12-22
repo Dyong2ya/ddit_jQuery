@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+proc1 = () =>{
+	//문자배열 생성
+	arr = ["hello", "bye", "angry", "sad", "happy", "cool"]
+	
+	//랜덤 발생
+	ran = parseInt(Math.random() * arr.length);
+		
+	//arr[ran]번째 새로운 textNode를 생성한다.
+	text = document.createTextNode(arr[ran]);
+
+	//result1 검색
+	result1 = document.getElementById('result1');  //--전역변수
+	
+	//p태그를 생성
+	ptag = document.createElement('p');
+		
+	//ptag에 text를 추가한다
+	ptag.appendChild(text);
+	
+	//ptag를 result1에 추가한다.
+	result1.appendChild(ptag);
+	
+	//스타일 - 글자색
+	cr = parseInt(Math.random() * 256);
+	cg = parseInt(Math.random() * 256);
+	cb = parseInt(Math.random() * 256);
+	
+	//스타일 - 글자크기 15~30
+	fsize = parseInt(Math.random() * 16 + 15);
+	
+	ptag.style.color = 'rgb(' + cr + ',' + cg + ',' + cb + ')';
+	ptag.style.fontSize = fsize + 'px';
+}
+
+proc2 = () =>{
+	//result1은 부모↓↓↓
+	last = result1.lastChild; //마지막 p태그
+	
+	//last는 자식
+	result1.removeChild(last);
+}
+
+
+proc3 = (ptag) =>{
+	//문자배열 생성
+	arr = ["hello ", "bye ", "angry ", "sad ", "happy ", "cool "]
+	
+	//랜덤 발생
+	ran = parseInt(Math.random() * arr.length);
+	
+	//result3 검색
+	result3 = document.getElementById('result3'); 
+	
+	//arr[ran]번째 새로운 textNode를 생성한다.
+	text = document.createTextNode(arr[ran]);
+	
+	//삭제버튼을 생성 
+	//<input type="button" value="삭제" onclick=""> //attribute : input / value
+	//<button type="button" onclick=""> 삭제</button> //attribute : button
+	
+	but = document.createElement('button');
+	but.setAttribute('type', 'button');
+	but.innerHTML = "삭제"; //innerHTML대신에 textContent로 써도 돼
+	but.onclick = function() { //onclick은 람다로 쓰면 this를 못 받아.
+		this.parentNode.remove();
+		//result3.removeChild(this.parentNode);
+	}
+	
+	/*but = document.createElement('input');
+	but.setAttribute('type', 'button');
+	but.setAttribute('value', '삭제');
+	but.onclick = function() {
+	}*/
+	
+	//p태그를 생성
+	ptag = document.createElement('p');
+	
+	//ptag에 text를 추가한다
+	ptag.appendChild(text);
+	
+	//p태그에 삭제버튼을 추가한다
+	ptag.appendChild(but); 
+	
+	//ptag를 result3에 추가한다.
+	result3.appendChild(ptag);
+
+}
+</script>
+
+<style>
+<!--동적으로 바꾸려면 스크립트에서 줘야돼-->
+#result1{ 
+  font-size : 2.0em;
+  color : blue;
+}
+</style>
+</head>
+<body>
+
+<div class="box">  
+추가버튼을 클릭하면 랜덤으로 발생되는 문자열을 textNode를 생성<br>
+p태그를 생성<br>
+생성된 textNode를 p태그에 추가한다.<br>
+p태그를 result1에 추가한다<br>
+삭제버튼을 클릭하면 result1의 자식요소인 p태그를 선택 - result1.lastChild<br>
+선택된 p태그를 부모인 result1에서 삭제 - result1.removeChild(result1.lastChild)<br><br>
+<input type="button" value="추가" onclick="proc1()">
+<input type="button" value="삭제" onclick="proc2()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+추가버튼을 클릭하면 랜덤으로 발생되는 문자열을 textNode를 생성<br>
+삭제버튼을 생성<br>
+p태그를 생성<br>
+생성된 textNode와 삭제버튼을 p태그에 추가한다.<br>
+p태그를 result3에 추가한다<br>
+<input type="button" value="추가삭제" onclick="proc3()">
+<br><br>
+<div id="result3"> </div>
+</div>  
+</body>
+</html>

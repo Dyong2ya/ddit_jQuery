@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  div{
+    border : 2px solid blue;
+    width : 100px;
+    height : 80px;
+    margin : 10px;
+    padding : 20px;
+  }
+  #d6{
+    position : relative;
+    top : 50px;  /*position이 없으면 그냥 margin사용해야 돼*/ /*상대적으로  위치 맞춰*/
+    left : 100px;
+  }
+  #d8{
+    position : absolute; /*맨 꼭대기로부터 top의 위치를 맞추는 거야*/
+    top : 50px;  /*기본 margin이 있어서 +50된거야. 애초에 margin 안 줘도 화면에 딱 안 붙어*/
+    left : 100px;
+  }
+  #d2{
+    position : fixed;
+    top : 100px;  
+    right : 50px;
+  }
+</style>
+</head>
+<body>
+  <div id="d1">1</div>
+  <div id="d2">
+    position : fixed;
+    top : 100px;  
+    right : 50px;
+  </div>
+  <div id="d3">3</div>
+  <div id="d4">4</div>
+  <hr>
+  <div id="d5">5</div>
+  <div id="d6">
+    position : relative;<br>
+    top : 50px; <br>
+    left : 100px; <br>
+  </div>
+  <div id="d7">7</div>
+  <div id="d8">
+    position : absolute; <br>
+    top : 50px; <br>
+    left : 100px; <br>
+  </div>  
+</body>
+</html>

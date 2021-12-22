@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+$(function() {
+	
+	str = "";
+	
+	$('#btnview').on('click', function() {
+// 		//입력한 값 가져오기
+// 		str += "이름 : "  + $('#user').val() + "<br>";
+// 		str += "성별 : "  + $('#gend:checked').val() + "<br>";
+		str += `이름 : ${ $('#user').val()} <br>`;
+		str += `성별 : ${ $('#gend:checked').val()} <br>`;
+		
+	
+		
+		intro =  $('#intro').val();
+		aa = intro.replace(/\r/g, "").replace(/\n/g,"<br>")
+		
+//		str += "소개 : "  + aa + "<br>";
+		str += `소개 : ${aa} <br>`;
+//		str += "직업 : "  + $('#work option:selected').val() + "<br>";
+		str += `직업 : ${$('#work option:selected').val()} <br>`;
+		
+		$('#result1 div').html(str);
+		
+	})
+})
+</script>
+</head>
+<body>
+<pre>
+백틱(backtick), backquote, grave accent를 이용하여
+문자열을 표현한다
+
+백틱(backtick), backquote, grave accent를 이용하여 표현된 문자열을 
+템플릿 리터럴이라고 한다
+
+템플릿 리터럴내에서 변수값은 ${}에 표현된다
+str = 이름 : "  + $('#user').val() + "<br>";
+str = `이름 : ${$('#user').val()} <br>` 
+
+color="rgb(" + r + "," + g + "," + b + ")";
+color = `rgb( ${r}, ${g}, ${b})`
+</pre>
+<div class="box">  
+<br><br>
+
+  <div id="result1">
+	<form onsubmit="return false;">​
+		<label for="user">이름</label>​
+		<input type="text" id="user" value="korea"><br><br>​
+		
+		<label >성별</label> ​
+		<input type="radio" id="gend" name="gend" value="남자" checked >남자​
+		<input type="radio" id="gend" name="gend" value="여자"  >여자<br><br>​
+		 
+		<label for="intro">소개</label> ​
+		<textarea id="intro" cols="40" rows="4"></textarea> <br><br>​
+		 
+		 <label for="work">직업</label>​
+		 <select id="work">​
+		   <option value="programmer">프로그래머</option>​
+		   <option value="progammer">프로게이머</option>​
+		   <option value="whitehand">백수</option>​
+		 </select><br><br>
+		 ​
+		<button type="button" id="btnview">조사하기 </button>  <!--type="button"이게 없으면 그냥 전송되면서 사라져--><!--아니면 맨 위에서 	<form onsubmit="return false;">-->​
+		<button id="btnchange">이름변경 </button>​
+	</form>
+	
+	<div>
+	
+	</div>
+  </div>
+</div>   
+</body>
+</html>

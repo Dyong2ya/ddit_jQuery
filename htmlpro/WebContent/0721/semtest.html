@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+.box{
+  width : 80%;
+  height : 400px;
+  margin-top : 100px;
+  
+}
+.boxin {
+  width : 20%;
+  height : 300px;
+  border : 1px dotted orange;
+  margin : 3px;
+  padding : 3px;
+  float  : left;
+}
+img{
+ width : 100%;
+ height : 80%;
+}
+
+</style>
+<script>
+window.onload = function(){
+     imgs =document.querySelectorAll('.ci');
+     for(i=0; i<imgs.length; i++){
+    	 imgs[i].addEventListener('click', fnClick);  //addEventListener  -- (이벤트 대상).addEventListener("event종류" , (함수명) );
+     }
+}
+
+function fnClick(){
+	
+	//alert(this.getAttribute('src'));
+	
+   proc1(this)	
+}
+
+ptag = null
+
+ function proc1(t){
+	
+	ptag =  t.parentNode.querySelector('p');
+	console.log(ptag);
+	
+	if(ptag != null)
+	       t.parentNode.removeChild(ptag);
+	 
+	 //img태그의 속성 src 값을 가져온다 -
+	vsrc= t.getAttribute('src');
+	ptag= document.createElement('p');
+	
+	start = vsrc.lastIndexOf("/")+1;
+	end  = vsrc.lastIndexOf(".");
+	
+	ptag.innerHTML =  vsrc.substring(start, end)
+	
+	t.parentNode.appendChild(ptag);  //img div timg를 넣어
+	
+ }
+</script>
+</head>
+<body>
+<pre>
+이미지테그에 직접 이벤트를 부여
+&lt;img onclick="proc1(this)" src="" alt="">
+</pre>
+<div class="box">
+  <div class="boxin"><img onclick="proc1(this)" src="../images/소우주.jpg" alt="소우주"></div>
+  <div class="boxin"><img onclick="proc1(this)"src="../images/뱅쇼.jpg" alt="뱅쇼"></div>
+  <div class="boxin"><img onclick="proc1(this)" src="../images/식품1.jpg" alt="식품1"></div>
+  <div class="boxin"><img onclick="proc1(this)" src="../images/카푸치노.jpg" alt="카푸치노"></div>
+</div>
+
+<pre>
+이미지에 대한 일괄 이벤트 등록  - script에서 
+class= "ci"인 요소를 검색 
+검색요소.addEventListener('click', functiond이름 )
+
+</pre>
+<div class="box">
+  <div class="boxin"><img class="ci" src="../images/소우주.jpg" alt="소우주"></div>
+  <div class="boxin"><img class="ci" src="../images/뱅쇼.jpg" alt="뱅쇼"></div>
+  <div class="boxin"><img class="ci" src="../images/식품1.jpg" alt="식품1"></div>
+  <div class="boxin"><img class="ci" src="../images/카푸치노.jpg" alt="카푸치노"></div>
+</div>
+
+<!--  <script>
+   //여기위치에서코딩시 window.onload= function(){} 코딩 없이 가능 
+   imgs =document.querySelectorAll('.ci');
+   for(i=0; i<imgs.length; i++){
+    	 imgs[i].addEventListener('click', fnClick);
+   }
+</script> -->
+</body>
+</html>
+
+
+
+
+
+
+
+

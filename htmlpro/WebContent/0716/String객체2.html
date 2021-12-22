@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+str = "우리 나라 만세 좋은 국가 화이팅 대한민국 사랑해 ";
+
+var proc2 = () => {
+	arr = str.split(" ", 5); //구분자를 띄어쓰기로 둬서 띄어쓰기 단위로 나뉘고 그것을 배열에 넣은거야
+	
+	document.getElementById('result2').innerHTML = arr + "<br>";
+	
+	out = "";
+	for(i=0; i<arr.length; i++){
+		out += i + "번째" + arr[i] + "<br>";
+	}
+	document.getElementById('result2').innerHTML += out;
+}
+
+var proc1 = () => {
+	
+	a = str.substring(19, 24); 
+	b = str.substr(19, 5);
+	c = str.slice(19, 24); 
+	
+	d = str.substring(19, str.length);
+	e = str.slice(19, str.length);
+	d = d.trim();
+	
+	if(d == "대한민국 사랑해"){ //공백도 인식하기 때문에 잘 확인해야돼. 공백을 확인하기 어렵다면 trim을 사용해주는 거야. 원문엔 공백 있는데 여기는 뒤에 공백없자나. 그래도 trim해서 ㄱㅊ
+		alert("성공");
+	}else{
+		alert("실패");
+	}
+	
+	out = "str.substring(20, 25)" + a + "<br>";
+	out += "str.substr(20, 5)" + b + "<br>";
+	out += "str.slice(20, 25)" + c + "<br>";
+	
+	out += "str.substring(19, str.length)" + d + "<br>";
+	out += "str.slice(19, str.length)" + e + "<br>";
+	
+	document.getElementById('result1').innerHTML = out;
+}
+
+function proc3() {
+	
+	//입력한 값 가져오기
+	/*aa = document.getElementsByTagName('textarea'); 
+	aa[0].value;
+	
+	aa = document.getElementsByTagName('textarea')[0];
+	aa.value;
+	aa = document.getElementsByTagName('textarea')[0].value;
+	
+	aa = document.querySelectorAll('textarea'); //배열 --은 한 줄로 못 줄여
+	aa[0].value;*/
+	
+	//aa = document.querySelector('textarea'); //무조건 첫번째것만 받아와
+	//aa.value;
+	aa = document.querySelector('textarea').value; //value가져와
+	
+	aa = aa.replace(/\r/g, '').replace(/\n/g, '<br>');
+	
+	document.getElementById('result3').innerHTML = aa; //innerHTML출력
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">  
+    부분문자열 추출하기<br>
+  substring(start, end)​<br>
+  slice(start, end)​<br>
+  <br>
+  start위치부터 문자열의 끝(str.length)까지 추출한다.<br><!-- length는 1부터 시작해 -->
+  substring(start, 전체길이)<br>
+​  slice(start, 전체길이)<br>
+  <br>
+  substr(start, length)​<br>​<br> <!-- 여기는 내가 원하는 만큼 잘라내겠다고 지정하는 length야 -->
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+문자열 분리하기<br>
+split(구분자, 개수)​ 구분자를 기준으로 문자열을 분리하여 배열로 저장한다<br>
+​개수를 생략하면 전체를 대상으로 한다<br><br>
+<input type="button" value="확인" onclick="proc2()">
+<br><br>
+<div id="result2"> </div>
+</div>   
+
+<div class="box">  
+문자열 변경하기<br>
+replace(old, new) old문자열을 new문자열로 변경한다<br>
+​정규식을 이용할 수 있다	 /	정규식    /<br><br>
+<textarea rows="10" cols="50"></textarea><br><br> <!-- 인라인 요소 -->
+<input type="button" value="확인" onclick="proc3()"> <!-- 인라인 요소 -->
+<br><br>
+<div id="result3"> </div>
+</div>   
+</body>
+</html>

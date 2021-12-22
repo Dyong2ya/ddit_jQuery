@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(function() {
+	$('#btn1').on('click', function() {
+		$('p').css('font-size', '1.5em');
+	})
+	
+	$('#btn2').on('click', function() {
+		//0번째 form의 p태그를 선택
+		
+		$('p', document.forms[0]).css('background', 'skyblue');
+	})
+	
+		//class="dd"인 div를 클릭하면 그 범위 안에서 p를 선택한다
+		$('.dd').on('click', function() {
+			$('p', this).css('color', 'red'); //클릭한 dd가 this야
+		})
+  })
+</script>
+
+<style>
+  form{
+    border : 1px solid #7B68EE;
+  }
+</style>
+</head>
+<body>
+<pre>
+     $('p') : 문서 전체에서 모든 P
+     $('p, #result1') : 전체 p와 id가 result1 인 요소를 동시에 선택 
+     $('p', '#result1') : result1 범위 안에서 전체 p를 선택
+     $('p, h1', '#result1') : result1 범위 안에서 전체 p와 h1 선택
+     $('p', this) : 현재 무언가를 수행하고 있는 객체 안에서 (this) p 선택
+</pre>
+<div class="box">  
+	<br><br>
+	<input type="button" id="btn1" value="전체p">
+	<input type="button" id="btn2"  value="0번쨰 form의p"><br>
+	class="dd"인 div를 클릭하면 그 범위 안에서 p를 선택한다
+	<br><br>
+	<div id="result1" class="dd">
+	    <p>무궁화꽃이 피었습니다1</p>
+	</div>
+	
+	<form>
+	    <p>무궁화꽃이 피었습니다2</p>	
+	</form>
+	
+	<div class="dd">
+	    <p>무궁화꽃이 피었습니다3</p>
+	</div>
+	
+	<p>무궁화꽃이 피었습니다4</p>
+
+	<form>
+	    <p>무궁화꽃이 피었습니다5</p>	
+	</form>	
+</div>   
+</body>
+</html>

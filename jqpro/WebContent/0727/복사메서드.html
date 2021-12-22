@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+		
+	$('.pp').on('click', function(){ 
+		
+		$(this).css('font-size', '+=5px');  //p태그를 누른 걸 this로 받는ㄱ야
+	})
+	$('#btn1').on('click', function(){ 
+		
+		a = $('#p1').clone();
+		//$('#result2').append(a); //변수로 받아서 다옴표없어
+		$(a).appendTo('#result2');
+	})
+	
+	$('#btn2').on('click', function(){ 
+		
+		$('#p2').clone(true).appendTo('#result2'); //변수로 안 받고 그냥 바로 
+		
+	})
+})
+</script>
+
+</head>
+<body>
+
+<div class="box">  
+	복사하기<br>
+	 $('#p1').clone() : 원본의 이벤트는 복사되지 않는다 <br>
+	 $('#p2').clone(true) : 원본의 이벤트도 같이 복사된다<br>
+	 <br>
+	<input type="button" value="clone" id="btn1">
+	<input type="button" value="clone(true)" id="btn2">
+	<br><br>
+	<div id="result1">
+	   <p class="pp" id="p1">무궁화 꽃이 피었습니다1★</p>
+	   <p class="pp" id="p2">무궁화 꽃이 피었습니다2☆</p>
+	</div>
+	<div id="result2"></div>
+</div>   
+</body>
+</html>

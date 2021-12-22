@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+//proc1()에서만 사용
+function Rect(garo,sero){ //객체
+	this.garo = garo;
+	this.sero = sero;
+	
+	this.getArea = function(){
+		return this.garo * this.sero;	
+	}
+	this.getCircum = function(){
+		return this.garo * 2 + this.sero * 2;	
+	}
+}
+
+//proc2()에서만 사용
+function Circle(rad){ //객체
+	this.rad = rad;
+	
+	this.getArea = function(){
+		return Math.floor(Math.pow(this.rad,2) * Math.PI);	//Math.pow()는 제곱을 구하는 메서드야. ,뒤에는 몇제곱
+	}
+	this.getCircum = function(){
+		return 2 * Math.PI * this.rad;
+	}
+}
+
+function proc1() { //함수
+	var rect = new Rect(4,5);
+	
+	print(rect, '#result1'); //맨 밑 print() - obj로 넘기고, out으로 넘기고
+}
+
+function proc2() { //함수
+	var circle = new Circle(5);
+	
+	print(circle, '#result2'); //맨 밑 print() - obj로 넘기고, out으로 넘기고
+}
+
+function print(obj, out) {
+	
+	/*if(obj instanceof Rect){
+		alert("rect");
+	}else if(obj instanceof Circle)
+		alert("circle");*/
+	
+	res = document.querySelector(out); //출력장소
+	
+	str = ""
+	if(obj instanceof Rect){
+		obj.name = "네모";	
+		
+		str += "가로 : " + obj.garo + "<br>";
+		str += "세로 : " + obj.sero + "<br>";
+	
+	}else if(obj instanceof Circle){
+		obj.name = "동그라미";
+		
+		str += "반지름 : " + obj.rad + "<br>";
+	}
+	//공통으로 찍히는 거
+	str += "이름 : " + obj.name + "<br>"
+	str += "면적 : " + obj.getArea() + "<br>"; //obj가 circle,rec 다 받아써
+	str += "면적 : " + obj.getCircum() + "<br>"; //obj가 circle,rec 다 받아써
+	
+	
+		
+	res.innerHTML = str;
+}	
+</script>
+</head>
+<body>
+
+<div class="box">  
+function Rect()<br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+function Circle()<br>
+<input type="button" value="확인" onclick="proc2()">
+<br><br>
+<div id="result2"> </div>
+</div>   
+</body>
+</html>

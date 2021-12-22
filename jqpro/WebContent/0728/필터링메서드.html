@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+$(function() {
+	
+	/*$('#btn1').click(function() {  })*/
+	
+	$('#btn1').on('click', function() {
+		//class=pp1인 요소를 선택하시오
+// 		document.getElementsByClassName('pp1')
+// 		document.querySelectorAll('.pp1')
+	
+// 		$('.pp1')
+// 		$('p.pp1') //p태그 중에서 pp1
+		$('p').filter('.pp1').css('background', 'yellow');	//가장 실행효율이 높은 방법	
+		
+		//p요소 중에 짝수 번째 요소를 선택
+		//$('#result1 p:even')
+		$('#result1 p').filter(':even').css('color', '#FF1493')
+	})
+	
+	$('#result2 p').on('click', function() {
+		
+		//현재 요소의 부모찾기 - parentNode / parent()
+		
+		/* a = $(this).parent().is('.dd');
+		if(a) { } */
+		
+		if($(this).parent().is('.dd')) {
+			//현재요소를 복사 //부모에 붙여넣기
+			$(this).clone().appendTo($(this).parent()).css('color','red');   //clone복사 	appendTo붙여넣기
+			
+		}else{
+			alert("작업대상이 아닙니다");
+		}
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">  
+	eq(1)  first()  last()<br>
+	filter(selector)<br>
+	$('p').filter('.pp1').css('background', 'yellow');<br>
+	$('#result1 p').filter(':even').css('color', '#FF1493')<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br><br>
+	<div id="result1">
+	   <p class="pp1" id="p1">무궁화 꽃이 피었습니다1</p>
+	   <p class="pp2" id="p2">무궁화 꽃이 피었습니다2</p>
+	   <p class="pp2" id="p3">무궁화 꽃이 피었습니다3</p>
+	   <p class="pp1" id="p4">무궁화 꽃이 피었습니다4</p>
+	   <p id="p5">무궁화 꽃이 피었습니다5</p>
+	</div>
+</div>   
+
+<div class="box">  
+	id(selector) = true / false를 리턴<br><br>
+
+	<br><br>
+	<div id="result2">
+	
+	  <div class="dd">
+	    <p class="pp1">무궁화 꽃이 피었습니다1</p>
+	  </div>
+
+	    <p class="pp2">무궁화 꽃이 피었습니다2</p>
+	    <p class="pp2">무궁화 꽃이 피었습니다3</p>
+	
+	  <div class="dd">
+	    <p class="pp1">무궁화 꽃이 피었습니다4</p>
+	  </div>  
+	 
+	   <p>무궁화 꽃이 피었습니다5</p>
+	</div>
+</div>   
+</body>
+</html>

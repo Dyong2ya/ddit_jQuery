@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="../js/board.js"></script>
+
+<style>
+  .box{
+  	margin: 20px;
+  }
+  .panel-heading:hover{
+    background: lightblue;
+  }
+  p{
+    height: auto;
+    margin : 3px;
+    padding:  5px;
+  }
+  .p1{
+    width: 74%;
+    float: left;
+  }
+  .p2{
+    width: 23%;
+    float: right;
+  }
+  .p3{
+    clear: both;
+  }
+  input[name=reply]{
+  	height: 40px;
+  	vertical-align: top;
+  }
+  .pager, .pagination{
+  	width: 100px;
+  	float: left;
+  }
+  #pagelist{
+  	width: 80%;
+  	margin-left: 50px;
+  }
+  #write{
+  	position: relative; 
+  	left : 90%;
+  }
+  label{
+    display: inline-block;
+    width: 200px;
+  }
+  .modal-body{
+  	height: 400px;
+  }
+  .rep{
+  	background: #fad8fe;
+  	margin: 2px;
+  }
+  .btn1{
+  	vertical-align: bottom;
+  }
+</style>
+  
+<script>
+$(function(){ //코드가 여기있어야 되는겟너무 길어져서 js로ㅓ 뺀거야
+	//listServer(); // 전체 20개의 데이터를 가져오는 거야
+	listPageServer(1);
+	
+	//이벤트 - 페이지 번호 클릭
+	$('#pagelist').on('click', '.paging', function() {
+		currentPage = $(this).text().trim();
+		listPageServer(currentPage);
+	})
+	//다음 버튼 클릭
+	$('#pagelist').on('click', '.next', function() {
+		nextstr = $('.paging').last().text().trim();
+		
+		currentPage = parseInt(nextstr) + 1;
+		listPageServer(currentPage);	
+	})
+		//이전 버튼 클릭
+	$('#pagelist').on('click', '.prev', function() {
+		prestr = $('.paging').first().text().trim();
+		
+		currentPage = parseInt(prestr) - 1;
+		listPageServer(currentPage);	
+	})
+	
+	//글쓰기 버튼 클릭 - 모달창
+	$('#write').on('click', function() {
+		$('#myModal').modal('show');
+		
+	})
+	//글쓰기 모달창에서 데이터 입력 후 전송버튼
+	$('#send').on('click', function() {
+		//입력한 모든 값을 가져온다
+		//서버로 보내기
+		sendServer();
+		$('#myModal').modal('hide');
+		$('.text').val("");
+		//listPageServer(1); //비동기 방식  서버의 실행여부,응답과 상관없이 list를 실행해서 에러발생
+	})
+	
+	//여러가지 액션 버튼 모음집
+	$(document).on('click', '.action', function() { //새로운 이벤트라서 delegate로 이벤트 줘야 됑
+		vname = $(this).attr('name');
+		vidx = $(this).attr('idx');
+		//alert(vname);
+		
+		if(vname == "modify"){
+			alert(vidx + "번글 수정")
+		}else if(vname == "delete"){
+			alert(vidx + "번글 삭제")
+		}else if(vname == "reply"){
+			alert(vidx + "번글에 답글달기")
+			//renum, bonum, name, cont, redate
+			
+			
+			//입력한 cont값 가져오기(val())
+			vcont = $(this).parent().find('.area').val(); //여기서 val은 get
+			console.log(vcont);
+			$(this).parent().find('.area').val(''); //여기서 val은 set으로 빈칸 출력하겠다는 의미
+			
+			vname1 = String.fromCharCode(Math.random()*26 + 65);
+			vname2 = String.fromCharCode(Math.random()*26 + 97);
+			vname3 = parseInt(Math.random()*100 + 1);
+			
+			vname = vname1 + vname2 + vname3;
+			console.log("name=" + vname);
+			
+			board = {}; //자바스크립트의 {객체}
+			board.bonum = vidx;
+			board.name = vname;
+			board.cont = vcont;
+			
+			replyServer(this); //this : 클릭한 등록버튼
+			//replyListServer//비동기에서는 이게 success를 확인도 안 하고 내려와서 여따 쓰면 안돼. js에서써줘!!!!
+			
+			
+		}else if(vname == "list"){
+			//alert(vidx + "번에 달린 댓글 출력");
+			replyListServer(this);
+			
+			//조회수 증가
+			vclass= $(this).parents('.panel').find('.panel-collapse').attr('aria-expanded'); //get해서 test로 가져온거야
+			//alert(vclass);
+			if(vclass == "true"){//닫혀있을 때는 undefined지
+				//alert("조회수 증가");
+			vhit = $(this).parents('.panel').find('.hit').text().trim();
+			//alert(vhit);
+			vhit = parseInt(vhit) + 1; // +1해서 vhit에 넣은거야
+			
+			$(this).parents('.panel').find('.hit').text(vhit); //set한거야
+			
+			//db에 반영
+			hitUpdate();
+			}
+			
+		}else if(vname == "re_modify"){
+			//alert(vidx + "댓글 수정"); //수정은 db에서 select해서 가져온 걸 고치는 거야
+			
+			//이미 modifyForm이 열려있는지 비교 -- display속성이 none인지 아닌지 비교
+			if($('#modifyForm').css('display') != 'none'){
+				replyReset(); //이미 다른 곳에 열려있다면 
+				//원래 내용과 p태그의 모양을 그대로 유지
+				//modifyForm은 다시 body로 append한다
+				
+			}
+			//수정할 댓글 원본
+			modicont = $(this).parents('.rep').find('.area').html();
+			modicont = modicont.replace(/<br>/g, "\n"); //자바가 아니라 자바스크립트에서는 replaceAll없엉
+			$('#modifyForm #rearea').val(modicont);
+			
+			$(this).parents('.rep').find('.area').empty().append($('#modifyForm'));
+			$('#modifyForm').show();
+		
+		}else if(vname == "re_delete"){
+			//alert(vidx + "댓글 삭제");
+			replyDelete(this);
+			
+		}
+	})	//.action이벤트 - 수정,삭제,제목클릭(list),댓글수정,댓글삭제,댓글등록
+	
+	replyReset = function(){
+		
+		spantag = $('#modifyForm').parent();
+		
+		$('body').append( $('#modifyForm'));
+		$('#modifyForm').hide();
+		
+		modicont = modicont.replace(/\n/g, "<br>")
+		//span태그의 원래 내용을 다시 출력
+		spantag.html(modicont);
+	}
+	
+	//댓글수정에서 취소버튼누를 때 - 원래대로 돌아감
+	$('#btnreset').on('click', function() {
+		replyReset();
+	})
+	
+	//댓글수정에서 확인버튼 누를 때 - 수정내용가져오기 - spantag에 출력
+	$('#btnok').on('click', function() {
+		modicont = $('#modifyForm #rearea').val(); //엔터(\r\n)
+		
+		//DB를 수정 - renum(vidx), cont(modicont)
+		replyModiServer();
+		
+		
+		
+		modicont = modicont.replace(/\r/g, "").replace(/\n/g, "<br>");
+		
+		spantag = $(this).parents('.area');
+		
+		$('body').append($('#modifyForm'));
+		$('#modifyForm').hide();
+		
+		spantag.html(modicont);
+		
+		//----------------------------------------------------------
+		
+		
+	})
+	
+})
+</script>
+</head>
+<body>
+  
+<div id="modifyForm" style="display:none;">
+	<textarea id="rearea" rows="2" cols="30"></textarea>
+	<input type="button" value="확인" class="btn1" id="btnok">
+	<input type="button" value="취소" class="btn1" id="btnreset">
+</div>  
+
+<h2>게시판</h2>  
+<!--   <input class="btn btn-primary" data-toggle="modal" data-target="#myModal" type="button" value="글쓰기"> -->
+  <input id="write" class="btn btn-primary" type="button" value="글쓰기">
+  
+  <br><br><br><br>
+  <div class="box">  
+  </div>   
+  
+  <div id="pagelist">  </div>
+  
+  
+  
+  <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">머리</h4>
+      </div>
+      <div class="modal-body">
+      <form>
+        <label>제목</label>
+           <input class="text" type="text" name="subject">
+        
+        
+         <label>이름</label>
+           <input class="text" type="text" name="writer">
+          
+         
+         <label>메일</label>
+           <input class="text" type="text" name="mail">
+          
+         <label>비밀번호</label>
+           <input class="text" type="text" name="password"> 
+         
+         <label>내용</label><br>
+           <textarea class="text" rows="10" cols="60" name="content"></textarea>
+ 
+         
+           <input type="button" value="전송" id="send">
+           
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+ 
+</body>
+</html>

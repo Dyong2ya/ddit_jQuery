@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+//객체정의 { } -> 속성, 메서드
+var rect = {
+		//속성 
+		garo : 10,
+		sero : 9,
+		//메서드
+		getArea : function() {
+			return this.garo * this.sero;  //현재 객체를 나타내는 rect의 변수라고 알려줘야 돼
+		},
+		getCircum : function() {
+			return this.garo * 2 + this.sero * 2
+		}
+}
+
+function proc1() { //확인버튼 누르면 여기로 가는거야
+
+	print("#result1")
+}	
+function print(out) {
+	str = "";
+	if(out == "#result2"){
+		str += "이름 : " + rect.name + "<br>";
+	}
+	//출력내용
+	str += "가로 : " + rect.garo + "<br>";
+	str += "세로 : " + rect.sero + "<br>";
+	
+	/*area = rect.getArea()
+	cir = rect.getCircum()
+	
+	str += "면적 : " + area + "<br>";
+	str += "둘레 : " + cir + "<br>";*/
+	//▽이렇게 줄여서 쓸 수 도 있다.
+	str += "면적 : " + rect.getArea() + "<br>";
+	str += "둘레 : " + rect.getCircum() + "<br>";
+
+	//출력장소
+	document.querySelector(out).innerHTML = str;
+}
+
+function proc2() {
+	//객체사용 - 객체이름.속성/ 객체이름.메서드()
+	//new를 이용하여 생성하지 않는다
+	
+	//입력받은 수를 rect객체의 garo속성에 대입
+	a = prompt("가로를 입력하세요");
+	rect.garo = a;
+	//  =>  rect.garo = prompt("가로를 입력하세요"); //이렇게 한 줄로 쓸 수 있어
+	
+	//입력받은 수를 rect객체의 sero속성에 대입	
+	b = prompt("세로를 입력하세요");
+	rect.sero = b;
+	
+	//이름입력 - 속성추가
+	name = prompt("이름을 입력하세요");
+	rect.name = name;
+	
+	print('#result2')
+}
+
+function proc3() {
+	let rect = { };
+	
+	//속성추가
+	rect.width = 9; //사실 rect는 proc3에 있는 것을 의미하지만 이렇게 사용해도 자바스크립트에서는 문제없다
+	rect.height = 12;
+	
+	rect.getArea = function() {
+		return this.width * this.height;
+	}
+	rect.getDulre = function() {
+		d = this.width * 2 + this.height * 2;
+		return d;
+	}
+	printRect(rect, "#result3")//↓밑에 파라미터로 넣어줘야돼 let으로 설정해놨잖아
+}
+function printRect(r, out) {
+	//출력장소
+	//document.getElementById('result3'); //#을 쓸 수 없어서 이거 사용 못 해
+	res = document.querySelector('#result3');
+	
+	//속성추가
+	r.name = "사각형";
+	
+	//출력내용
+	str = "이름 : " + r.name + "<br>";
+	str += "가로 : " + r.width + "<br>";
+	str += "세로 : " + r.height + "<br>";
+	
+	str += "면적 : " + r.getArea() + "<br>";
+	str += "둘레 : " + r.getDulre() + "<br>";
+	
+	//출력
+	res.innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+<pre>
+var rect = {
+		//속성 
+		garo : 10,
+		sero : 9,
+		//메서드
+		getArea : function() {
+			return this.garo * this.sero;  //현재 객체를 나타내는 rect의 변수라고 알려줘야 돼
+		},
+		getCircum : function() {
+			return this.garo * 2 + this.sero * 2
+		}
+}
+</pre>
+<div class="box">  
+Rect객체 생성<br>
+리터럴에 의한 객체<br>
+<br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+가로.세로 입력하기<br>
+rect객체의 garo, sero 속성 값으로 대입하기<br>
+<br>
+<input type="button" value="확인" onclick="proc2()">
+<br><br>
+<div id="result2"> </div>
+</div>  
+
+<div class="box">  
+★★★★★★★★★★★★★★★★★★★★★★★★★
+rect = { }<br>
+객체 정의 시 속성과 메서드 없이 선언이 가능<br>
+동적으로 속성과 메서드를 추가해서 사용 가능<br>
+<br>
+<input type="button" value="확인" onclick="proc3()">
+<br><br>
+<div id="result3"> </div>
+</div>    
+</body>
+</html>

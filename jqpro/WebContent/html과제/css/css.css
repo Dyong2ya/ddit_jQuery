@@ -1,0 +1,231 @@
+body{
+    min-width: 1800px;
+}
+header{
+    height: 102px;
+    width: 100%;
+    background: #F0FFF0;
+}
+header a{
+    text-decoration: none;
+    color: black;
+    float: right;
+    margin-top: 10px;
+}
+header img{
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+nav ul{
+    list-style: none;
+    line-height: 2.5;
+    background: black;
+    padding: 0px;
+}
+#nav{
+    height: 62px;
+    width: 100%;
+    border-top: 3px dotted olive;
+    border-bottom: 2px solid olive;
+    margin-bottom: 10px;
+}
+#navmenu{
+    width: 1500px;
+    margin: 0 auto;
+}
+#navmenu li{
+    float: left;
+    position: relative;
+    margin-right: 60px;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-decoration: none;
+}
+#navmenu a{
+	 color: #20B2AA;
+	 font-size: 23px;
+	 text-decoration: none;
+}
+#left ul{
+	list-style: none;
+    line-height: 2.5;
+    float: left;
+    background: #98FB98;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 15%;
+    height: 550px;
+}
+
+#left ul li{
+    border-bottom: 1px solid #393e50;
+    padding-left: 34px;
+}
+#left a{
+    text-decoration: none;
+    font-size : 20px;
+}
+#menu li a{
+    text-decoration: none;
+    color: #673ab7;
+}
+nav{ 
+    padding-top: 20px;
+    float: left;
+}
+nav ul{
+    background: #525d76;
+    margin-top: -25px;
+    margin-left : 80px;
+    
+}
+
+nav ul li:hover{
+  	border-radius : 10px;
+    background: #FFFAF0;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+section{
+    width: 1200px;
+    height: 554px;
+    float: left;
+}
+
+iframe{
+	margin: 0 auto; 
+    width: 1500px;
+    height: 570px;
+    border: none;
+}
+
+#main{
+    width: 64%;
+    height: 527px;
+    border: 1px solid lightgray; 
+    border-radius : 20px;
+    margin-left: 20px;
+    margin-top : 10px;
+    margin-bottom : 10px;
+    padding: 5px;
+    position: relative;
+    top: -7px;
+}
+section{
+	width: 100%;
+}
+section div{
+	float : left;
+	margin-left : 40px;
+	margin-top: 20px;
+    border : 2px solid lightgray;
+    padding : 8px;
+}
+section div img{
+    height: 370px;
+    width: 300px;
+}
+#right{
+    float: right;
+    background: #98FB98;
+    height: 534px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 15%;
+    height: 550px;
+    margin-right: 7px;
+}
+#right a{
+    color: blue;
+}
+
+.cloth img{
+    width: 100%;
+    height: 50%;
+}
+video{
+    margin: 10px;
+    width: 100%;
+    height: 400px;
+}
+.movie{
+    width: 25%;
+    height: 278px;
+    border: 1px solid #d4d4d4;
+    float: left;
+    margin-left: 10px;
+    padding: 20px;
+    position: relative;
+    top: -7px;
+    text-align: center;
+}
+.apple img{
+    height: 232px;
+}
+footer{
+    background: #2F4F4F;
+    height: 78px;
+    color: #fff;
+    text-align: center;
+    padding-top : 50px;
+    clear: both;
+}
+#reg{
+    background: #DCDCDC;
+    width: 520px;
+    height: 420px;
+    margin-top: 20px;
+    padding : 10px;
+}
+#field{
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+#field div{
+    width: 200px;
+    margin: 0 auto;
+}
+#field span{
+    width: 120px;
+    line-height: 2;
+
+}
+input[type="button"]{
+    width : 100px;
+}
+#cart{
+    background: #DCDCDC;
+    width: 500px;
+    height: 250px;
+    margin-top: 20px;
+    padding: 10px;
+}
+caption{
+    margin-bottom: 10px;
+}
+#tab{
+    border-collapse: collapse;
+    border: 1px solid black;
+    background: #DCDCDC;
+    margin: 0 auto;
+}
+#tab td{
+    height: 28px;
+}
+#tab input[type="text"]{
+    width: 100px;
+}
+.btn{
+    margin-top: 5px;
+    margin-left: 18px;
+    height: 100px;
+}
+#movie{
+    overflow-y: scroll;
+}

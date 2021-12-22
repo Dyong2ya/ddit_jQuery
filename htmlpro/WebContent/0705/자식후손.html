@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  div{
+    border : 1px solid green;
+    margin : 20px;
+    padding : 10px;
+  }
+  table{
+    border : 1px solid green;
+  }
+  td{
+    width : 100px;
+    height : 50px;
+  }
+  p{
+    background : pink;
+  }
+  div#d1 p{ /*자식은 띄우고 div#d1이거는 div후손 들 중 d1이라서 */
+    background : yellow;
+  }
+  #d2 p{
+    background : lightgreen;
+  }
+  table span{
+    font-size : 2.0em;
+  }
+  span{
+    background : red;
+  }
+</style>
+</head>
+<body>
+<pre>
+ 자식 : t1 > t2 : t1태그의 자식요소인 t2태그를 선택한다
+ 후손 : t1 t2 : t1태그의 후손요소인 t2태그를 선택한다(후손에는 자식도 포함)
+
+ div의 자식 p태그를 선택
+</pre>
+<div id="d1">
+   <p><span>무궁화</span> 꽃이 피었습니다</p>
+   <p>무지개가 떴습니다</p>
+   <p>우리집 강아지는 복슬강아지</p>
+   <p>햇볕은 쨍쨍 모래알은 반짝</p>
+   <p>태극기가 바람에 펄럭입니다</p>
+</div>
+
+<div id="d2">
+   <p>무궁화 꽃이 피었습니다</p>
+   <p>무지개가 떴습니다</p>
+   <p>우리집 강아지는 복슬강아지</p>
+   <p>햇볕은 쨍쨍 모래알은 반짝</p>
+   <p>태극기가 바람에 펄럭입니다</p>
+</div>
+
+<div>
+  <table border='1'>
+    <tr>
+      <td><span>adasdasd</span>asd</td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+$(function() {
+	  xhr = new XMLHttpRequest()
+// 	//input type=button일 경우
+// 	$('#send').on('click', function() { })
+	
+	//input type=submit일 경우
+	$('form').on('submit', function() {
+		//입력한 값 가져오기
+		inputId = $('#id').val();
+		inputPass = $('#pass').val();
+		console.log(inputId, inputPass);
+		
+		  //비동기를 이용해서 서버로 보내기
+		
+		  data = "id=" + inputId + "&pass=" + inputPass;
+		  xhr.open('post', 'aaa.jsp', true);
+		 
+		  xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded'); //network - requestHeader에 있는 거 쓴거야. 0701 form확인 //post에서만 사용setRequestHeader
+		  xhr.send(data);
+		  
+		  //응답받기
+		  xhr.onreadystatechange = function() {
+			  if(this.readyState == 4 && this.status == 200){
+				  res = this.responseText;
+				  
+				  $('#result2 div').html(res);
+			  }
+		  }
+	})
+	
+	$('#btn1').on('click', function() {
+		
+		//입력한 값을 가져온다 - 현재 없다
+		
+		//서버로 보내기
+		// xhr을 위에 전역변수로 설정해놔서 이렇게 사용
+		xhr.open('get', 'as_get.jsp', true);
+		xhr.send();
+		
+		//응답받기 - 출력하기
+		str = "";
+		xhr.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200){
+				 res = JSON.parse(this.responseText);
+				 
+				 //as_get에 선언된 변수들 받아오는 거야
+				 str += "이름: " + res.name + "<br>";
+				 str += `주소: ${res.addr}<br>`;
+				 str += `전화번호: ${res.tel}<br>`;
+				 
+				 $('#result3 div').html(str);
+			}
+		}
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">  
+비동기가 아닌 기존의 동기방식으로 요청하고 응답한다<br>
+응답페이지는 새로운 페이지로 생성된다
+<br><br>
+	<div id="result1">
+	  <form action="aaa.jsp" method="post">
+	        아이디 : <input type="text" name="id"><br>
+	        비밀번호 : <input type="password" name="pass"><br>
+	    <input type="submit" value="전송">
+	  </form>
+	</div>
+</div>   
+
+<div class="box">  
+    비동기를 이용해서 서버로 보내기<br>
+  xhr = new XMLHttpRequest()<br>
+  data = "id=" + inputId + "&pass=" + inputPass; <!-- 공백있으면 안돼영~! -->
+  xhr.open('post', 'aaa.jsp', true)<br> <!-- true필수 -->
+  xhr.send(data)<br><br> <!-- get이 아니고 post방식이라 data필요한 거야 -->
+    응답 - readyState상태 : 0,1,2,3,4 	status : 200(성공) 304(요청 안 옴) 403(요청 안 옴) 404 500(코딩잘못)  <!-- readyState와  status상태를 비교한다-->
+    xhr.onreadystatechange = function(){ }
+ <br><br>
+	<div id="result2">
+	  <form onsubmit="return false;"> <!-- input type=submit일 때 이렇게 해놔야 전송 안 돼 -->
+	        아이디 : <input type="text" id="id" name="id"><br>
+	        비밀번호 : <input type="password" id="pass" name="pass"><br>
+	    <input type="submit" value="전송">
+	  </form>
+	  
+	  <div>
+	  
+	  </div>
+	  
+	</div>
+</div>   
+
+
+<div class="box">  
+    비동기를 이용해서 서버로 보내기<br>
+  xhr = new XMLHttpRequest()<br>
+  
+  xhr.open('get', 'as_get.jsp', true)<br> 
+  xhr.send()<br><br> 
+    응답 - readyState상태 : 0,1,2,3,4 	status : 200(성공) 304(요청 안 옴) 403(요청 안 옴) 404 500(코딩잘못)  <!-- readyState와  status상태를 비교한다-->
+    xhr.onreadystatechange = function(){ }
+    <input type="button" value="확인" id="btn1">
+	<div id="result3">
+	<br><br>	 
+	  <div>
+	  
+	  </div>
+	  
+	</div>
+</div>   
+</body>
+</html>

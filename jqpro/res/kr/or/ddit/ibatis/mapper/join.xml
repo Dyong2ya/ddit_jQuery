@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- 인터페이스 서비스 다오에 준 애들이랑 이름 똑같이 줘야 안 헷갈려 -->
+
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+			
+<sqlMap namespace="join">
+
+<!-- 전체 리스트 -->
+  <select id="selectAll" resultClass="joinVO"> <!-- resultclass는 이제 서비스로 빼낼 때 내뱉는 값 -->
+    select * from join
+  </select>
+  
+<!-- id 중복검사 -->
+  <select id="searchId" resultClass="string" parameterClass="string">
+    select id from join where id = #data# <!-- 받아올 값이 하나면 파라미터클래스가 #안에 넣을 값의 변수가 아무거나여도 되는데 -->
+  </select>
+
+<!-- 가입 저장 -->
+  <insert id="insertMember" parameterClass="joinVO"> <!--parameterClass에 있는 애들을 써주는 거야-->
+    insert into join values(
+    		#id#, <!-- 파라미터 클래스가 여러 개일 경우에는 컬럼명 하나씩 다 적어줘야 된다. -->
+   			#pass#, 
+    		#name#,
+    		#bir#,
+    		#zip#,
+    		#add1#,
+    		#add2#,
+    		#hp#,
+    		#email#
+   	)
+   	<selectKey keyProperty="id" resultClass="string">
+   	  select id from join where id=#id#
+   	</selectKey>
+  </insert>
+
+<!-- 우편번호 검색 -->
+  <select id="selectByDong" parameterClass="String" resultClass="zipVO"> <!-- resultClass config에 준 거 쓰는 거야 -->
+  
+  </select>
+
+</sqlMap>

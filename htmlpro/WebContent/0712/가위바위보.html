@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+ function proc1() {
+	//입력
+	a=prompt("첫번째 가위바위보입력", ""); //두번째 파라미터는 생략되어도 괜춘
+	b=prompt("두번째 가위바위보입력", "");
+	
+	let str = "첫번째 사람 : " + a + "<br>";
+	str += "두번째 사람 : " + b + "<br>";
+	if(a == b){
+		str += "비겼습니다 <br>"//str += "두번째 사람 : " + b + "<br>";여기에서 파생된 애임
+	}else if(a == "가위" && b == "보"   //a가 이기는 공식
+		|| a == "바위" && b == "가위" 
+		|| a == "보" && b == "바위"){
+		
+		str += "첫번째 사람이 이겼습니다"; //+=을 해도 되는 이유는  str = "비겼습니다 <br>" 이거랑 전혀 상관없는 식이기 때문에 아무 상관없음. str += "두번째 사람 : " + b + "<br>";여기에서 파생된 애임
+	}else{
+		str += "두번째 사람이 이겼습니다"; //str += "두번째 사람 : " + b + "<br>";여기에서 파생된 애임
+	}
+	
+	//출력장소 -- 둘 중 아무거나 상관없음
+	//res = document.getElementById('result1')
+	res = document.querySelector('#result1') //querySelector에서는 이게 아이딘지 클래슨지 구분해줘야돼.
+	
+	//출력내용 - str
+	//출력
+	res.innerHTML = str;
+}
+</script>
+</head>
+<body>
+<input type="button" value="확인" onclick="proc1()">
+<br>
+<br>
+<div id="result1">
+
+</div>
+</body>
+</html>

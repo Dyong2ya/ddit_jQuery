@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+  <style>
+  div{   /*정적인 스타일이야*/
+    width : 550px;
+    height: 150px;
+    border : 3px solid orange;
+    
+    margin : 20px;
+    padding : 20px;
+  }
+  </style>
+ <script>
+   window.onload = function() { //미리 검색해두는 거야.
+   var vinput = prompt("이름을 입력하세요");
+   var vdiv = document.getElementsByTagName('div'); 
+
+   vdiv[0].innerHTML = "당신의 이름은" + vinput + "입니다";
+   
+   }
+ </script>
+</head>
+<body>
+<pre>
+실행하자마자 이름을 입력받는다. - prompt를 이용
+script가 먼저 코딩되어 있지만 나중에 실행하도록 한다.
+</pre>
+<div></div>
+</body>
+</html>

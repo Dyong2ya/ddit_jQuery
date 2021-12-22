@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+ function gugu1() {
+	//입력
+	su = prompt("몇 단을 출력할까요");
+	
+	//출력내용
+	let str = "***" + su + "단***<br>";
+	
+	for(var i=1; i<10; i++){ //만약 여기서 var라고 쓰면 밑에서도 사용가능한 변수가 돼. 	i = i +10000; 이거 써보는 건데 이거 i가 살아있나 죽어있나 확인하는 거라서 사실 없어도 그만 있어 도 그만 숫자도 상관없어.. 그래서 밑에서  let이면 for문에서만 돌아
+		str += su + " * " +  i + " = " + (su * i) + "<br>"; /*//이거 let str = "***" + su + "단"***<br>;받아와서 +=*/
+	}
+	
+	i = i +10000;
+	
+	//출력장소
+	let res = document.querySelector('#result1'); //let을 붙이고 안 붙이고는 전역이냐 지역이냐
+	//출력
+	res.innerHTML = str;
+}
+ 
+ function gugu2() {
+	//출력장소
+		let res = document.querySelector('#result2');
+	
+	for(var k=0; k<3; k++){ //밑의 내용을 for문으로 감싸서 총 3 번을 돌리는거야. 그리고 res.innerHTML += str; 여기에서 +=을 주는 거야. 
+	//입력
+	su = prompt("몇 단을 출력할까요");
+	
+	//출력내용
+	let str = "***" + su + "단***<br>";
+	
+	for(var i=1; i<10; i++){ //만약 여기서 var라고 쓰면 밑에서도 사용가능한 변수가 돼. let이면 for문에서만 돌아
+		str += su + " * " +  i + " = " + (su * i) + "<br>"; /*//이거 let str = "***" + su + "단"***<br>;받아와서 +=*/
+	}
+	
+	res.innerHTML += str;
+	}
+ }
+ 
+ function gugu3() {
+	//출력장소
+	let res = document.querySelector('#result3');
+	
+	for(var k=2; k<10; k++){ //밑의 내용을 for문으로 감싸서 총 3 번을 돌리는거야. 그리고 res.innerHTML += str; 여기에서 +=을 주는 거야. 
+	
+	//출력내용
+	let str = "***" + k + "단***<br>";
+	
+	for(var i=1; i<10; i++){ //만약 여기서 var라고 쓰면 밑에서도 사용가능한 변수가 돼. let이면 for문에서만 돌아
+		str += k + " * " +  i + " = " + (k * i) + "<br>"; /*//이거 let str = "***" + su + "단"***<br>;받아와서 +=*/
+	}
+	
+	res.innerHTML += str;
+	}
+}	 
+
+function gugu4() {
+	//출력장소
+	let res = document.querySelector('#result4');
+	
+	str="<h1>구구단<h1><table border='1'>";
+	for(k=1; k<10; k++){
+	
+		str += "<tr>"; //줄 만들기
+		for(i=1; i<10; i++){ //td 9칸 만들기 이거에 맞게 위에 tr이 줄을 만들어줘
+			str += "<td>" + (k*i) + "</td>"; 
+		}
+		str += "</tr>";
+	}
+	str += "</table>";
+	
+	//출력
+	res.innerHTML = str;
+}
+</script>
+
+<style>
+  table{
+    border-spacing: 10px;
+  }
+  td{
+    width : 80px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  td:nth-child(1){
+    background: lightgray;
+  }
+  tr:nth-child(1){
+    background: lightgray;
+  }
+</style>
+</head>
+<body>
+<div>
+  단수를 입력한다 - prompt()<br>
+  입력한 수의 구구단을 출력<br><br>
+  <input type="button" value="확인" onclick="gugu1()">
+  <br><br>
+  <div id="result1"></div>
+</div>
+
+<div>
+  <input type="button" value="확인" onclick="gugu2()">
+  <br><br>
+  <div id="result2"></div>
+</div>
+
+<div>
+  <input type="button" value="확인" onclick="gugu3()">
+  <br><br>
+  <div id="result3"></div>
+</div>
+
+<div>
+  <input type="button" value="확인" onclick="gugu4()">
+  <br><br>
+  <div id="result4"></div>
+</div>
+</body>
+</html>

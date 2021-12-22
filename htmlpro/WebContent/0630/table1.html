@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="mystyle.css">
+	
+	<style>
+	  table{
+	     border : 2px solid blue;
+		 border-collapse : collapse ;
+		 margin : 20px auto;
+	  }
+	  td{
+	     width : 300px;
+		 height : 40px;
+		 font-size : 1.5em;
+		 text-align : center;
+	  }
+	  th{
+	     /* 자동으로 설정 
+	     text-align : center;
+		 font-weight : bold;
+		 */
+	     height : 40px;
+		 font-size : 2.0em;
+		 //background-color : lightgreen;
+		 //background-color : rgb(255,201,124);
+		 //background-color : rgb(56%,99%,89%);
+		 background-color : #afd5e4;
+	  }
+	  
+	  #names{
+	     width : 500px;
+	  }
+	  
+	  #tab2{
+	     border : 10px inset green;
+		 border-collapse :separate;
+	  }
+	  
+	  #tab3 .aa{
+	    text-align : left;
+	  }
+	  
+	</style>
+  </head>
+  
+  <body>
+    <table border="1">
+	  <tr>
+	    <td>홍길동</td>
+		<td>대전</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>개나리</td>
+		<td>부산</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>진달래</td>
+		<td>대구</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>무궁화</td>
+		<td>서울</td>
+	  </tr>
+	</table>
+	
+	
+	 <table id="tab2" border="1">
+	   <tr>
+	     <th id="names">이름</th>
+		 <th>주소</th>
+	   </tr>
+	 
+	 
+	  <tr>
+	    <td>홍길동</td>
+		<td>대전</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>개나리</td>
+		<td>부산</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>진달래</td>
+		<td>대구</td>
+	  </tr>
+	  
+	  <tr>
+	    <td>무궁화</td>
+		<td>서울</td>
+	  </tr>
+	</table>
+	
+	
+	<pre>
+	  홍길동, 개나리 ,진달래, 무궁화의 td 영역을 같은 스타일을 부여하기 위하여 
+	  id대신에 class 를 붙여 사용한다 
+	  &lt;td class="aa">홍길동&lt;/td>
+	  
+	  class이름을 style에서 사용할때는 .으로 접근한다 
+	  #tab3 .aa {
+	      text-align : left;
+	  }
+	</pre>
+	
+	<table id="tab3" border="1">
+	   <tr>
+	     <th id="names">이름</th>
+		 <th>주소</th>
+	   </tr>
+	 
+	 
+	  <tr>
+	    <td class="aa">홍길동</td>
+		<td>대전</td>
+	  </tr>
+	  
+	  <tr>
+	    <td class="aa">개나리</td>
+		<td>부산</td>
+	  </tr>
+	  
+	  <tr>
+	    <td class="aa">진달래</td>
+		<td>대구</td>
+	  </tr>
+	  
+	  <tr>
+	    <td class="aa">무궁화</td>
+		<td>서울</td>
+	  </tr>
+	</table>
+	
+	
+	
+	
+  </body>
+  
+</html>
+
+
+
+
+
+
+
+

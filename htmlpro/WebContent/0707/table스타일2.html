@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+  table{
+    border : 5px solid blue;
+    margin : 50px auto;
+  }
+  th{
+    height : 100px;
+    background : lightgreen; 
+    font-size : 2.0em; /*font-weight : bold & text-align : center은 th에서 기본실행*/
+  }
+  td{
+    width : 300px;
+    height : 50px;  
+    text-align : center;
+    font-size : 2.0em; 
+  }
+  .tt{
+    width : 350px;
+  }
+  caption {
+    font-size : 2.0em;
+    margin : 20px;
+    font-weight : bold;
+    caption-side: bottom;
+  }
+  table#tab1 .alt{
+    background : #f8dfef; /*16진수로 준 거*/ 
+  }
+  #tab2 tr:nth-child(2n-1) { /*theh tr에 들어가 있기 때문에 짝수번째에 찍히는 걸로 나온다.*/
+    background : #def4f1; 
+  }
+  #tab3 td:nth-child(2n-1) { 
+    background : #ffeedf; 
+  }
+  </style>
+<body>
+ <table id="tab1" border="1">
+ <caption>VIP리스트</caption>
+   <tr>
+     <th>이름</th>
+     <th>이메일</th>
+   </tr>
+   <tr>​
+     <td>김철수</td>
+     <td class="tt">chul@google.com</td>
+   </tr>​
+   <tr class="alt">
+     <td>김영희</td>
+     <td class="tt">young@google.com</td>
+   </tr>​
+   <tr>
+     <td>홍길동</td>
+     <td class="tt">hong@google.com</td>
+   </tr>
+   <tr class="alt">
+     <td>김수진</td>
+     <td class="tt">sujin@google.com</td>
+   </tr>​
+</table>
+
+ <table id="tab2" border="1">
+ <caption>VIP리스트</caption>
+   <tr>
+     <th>이름</th>
+     <th >이메일</th>
+   </tr>
+   <tr>​
+     <td>김철수</td>
+     <td class="tt">chul@google.com</td>
+   </tr>​
+   <tr class="alt">
+     <td>김영희</td>
+     <td class="tt">young@google.com</td>
+   </tr>​
+   <tr>
+     <td>홍길동</td>
+     <td class="tt">hong@google.com</td>
+   </tr>
+   <tr class="alt">
+     <td>김수진</td>
+     <td class="tt">sujin@google.com</td>
+   </tr>​
+</table>
+
+ <table id="tab3" border="1">
+ <caption>VIP리스트</caption>
+   <tr>
+     <th>이름</th>
+     <th>이메일</th>
+   </tr>
+   <tr>​
+     <td>김철수</td>
+     <td class="tt">chul@google.com</td>
+   </tr>​
+   <tr class="alt">
+     <td>김영희</td>
+     <td class="tt">young@google.com</td>
+   </tr>​
+   <tr>
+     <td>홍길동</td>
+     <td class="tt">hong@google.com</td>
+   </tr>
+   <tr class="alt">
+     <td>김수진</td>
+     <td class="tt">sujin@google.com</td>
+   </tr>​
+</table>
+</body>
+</html>

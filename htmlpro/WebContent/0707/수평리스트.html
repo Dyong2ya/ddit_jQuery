@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+  ul{
+    border : 3px solid pink;
+    border-left : none;
+    border-right : none;
+    padding : 10px;
+    height : 80px;
+    list-style-type: none;
+    width : 70%;
+    margin : 10px auto;
+  }
+  li{
+    width : 300px;
+    float : left;
+    text-align : center;
+    padding : 10px;
+  }
+  a{ /*a태그는 인라인 요소*/
+    letter-spacing : 20px;
+    font-size : 40px;
+    text-decoration : none;
+  }
+  
+  a:link { color : lightgreen;  background : lightgray;}
+  a:visited { color : purple; }
+  a:hover { font-size : 1.5em; color : blue; background : yellow; } /*원래 사이즈 2.0에서 1.5로 */
+  a:active{ text-decoration : underline; }
+</style>
+</head>
+<body>
+<pre>
+  ul{
+    border : 3px solid pink;
+    border-left : none;
+    border-right : none;
+    padding : 10px;
+    height : 80px;
+    list-style-type: none;
+    width : 70%;
+    margin : 10px auto;
+  }
+  li{
+    width : 300px;
+    float : left;
+    text-align : center;
+    padding : 10px;
+  }
+  a{ /*a태그는 인라인 요소*/
+    letter-spacing : 20px;
+    font-size : 40px;
+    text-decoration : none;
+  }
+  
+  a:link { color : lightgreen; }
+  a:visited { background : yellow; }
+  a:hover { font-size : 1.5em; color : blue; background : yellow; } /*원래 사이즈 2.0에서 1.5로 */ /*background는 hover에서만 가능*/
+  a:active{ text-decoration : underline; }
+  
+</pre>
+  <ul>
+    <li><a href="http://www.naver.com">HOME</a></li> <!--  a href="#" 이거는 페이지 이동  안 해-->
+    <li><a href="#">BLOG</a></li>
+    <li><a href="#">ABOUT</a></li>
+    <li><a href="#">CONTACT</a></li>
+  </ul>
+</body>
+</html>

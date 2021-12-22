@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/formvaild.js"></script><!--외부 스크립트로 받아올거야-->
+
+<script type="text/javascript">
+// innerHTML, textContent (입력한 값을 가져올 수 있음)
+
+   proc1 = () => {
+      
+      flag = vaild();
+      
+      if(flag) {
+         alert("모두 입력 성공 !");
+      }
+      
+   }
+
+</script>
+
+</head>
+<body>
+
+
+   <div class="box">  
+      
+
+      <div id="result1"> 
+      
+         <form id="ff" name="ff"> 
+           아이디(6-8 문자): <input type='text' id='username' name='id'><br>
+      비밀번호 : <input type='password' id='pass' name='pass'><br>
+            이름: <input type='text' id='name' name='name' ><br>
+            주소: <input type='text' id='addr' name='addr' ><br>
+            생일: <input type='date' id='birthday' name='birthday' ><br>
+      
+            이메일: <input type='email' id='email' name='email'><br>
+            휴대폰: <input type='tel' id='phone' name='phone'><br>
+            
+            <input type='button' onclick='proc1()' value='확인' ><br> <!-- submit 은 스크립트 안거치고 바로 감 -->
+            
+         </form>
+      
+      </div>
+   
+   </div>
+   
+</body>
+</html>

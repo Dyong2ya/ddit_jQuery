@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+  <script>  
+  function proc1() {
+	    var now = new Date();
+	 	var now2 = now.toLocaleString();
+		var now3 = now.toLocaleDateString();
+	    var now4 = now.toLocaleTimeString();
+		
+	    document.write("new Date() => " + now + "<br>");
+	    document.write("now.toLocaleString() => " + now2 + "<br>");
+	    document.write("now.toLocaleDateString() => " + now3 + "<br>");
+	    document.write("now.toLocaleTimeString() => " + now4);
+}
+  </script> <!--html과 함Rp script가 실행되는데 이럴 때는 document.write이거 쓰면 안돼. 정보 다 지워져. -->
+</head>
+<body>
+
+  <input type="button" value="확인" onclick="proc1()">
+  <br>
+  <br>
+  <img src="../images/단풍.jpg" alt="단풍.jpg">
+</body>
+</html>

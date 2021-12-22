@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/myStyle.css">
+
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+
+	$(function() {
+		
+		
+		$('#btn1').on('click', function() {
+			
+			$('li:first, li:last').css('background-color', 'coral');
+			
+			$('li:lt(4)').css('font-size', '1.5em').css('font-weight', 'bold');
+			
+			/*
+			$('li:lt(4)').css({
+								'font-size': '1.5em',
+								'font-weight' : 'bold'
+								});
+			*/
+			
+			$('li').eq(5).css('background-color', 'teal');
+		})
+		
+		
+		
+		
+		$('#btn2').on('click', function() {
+			
+			$('#result2 tr:even').css('background-color', 'lightgray');
+			$('#result2 tr:odd').css('background-color', 'gray');
+			$('#result2 table').css('border-color', 'white');
+			
+			
+		})
+		
+		
+		$('#btn3').on('click', function() {
+			
+			$('#result3 tr:even').css('background-color', '#FAECC5');
+			$('#result3 tr:odd').css('background-color', 'white');
+			$('#result3 table').css('border-color', 'white');
+			
+			
+			$('#result3 tr:first').css({'background-color' : 'teal', 'font-size' : '1.2em', 'font-weight' : 'bold', 'color':'white'});
+			
+			
+		})
+		
+		
+	})
+	
+	
+
+
+</script>
+
+<style>
+
+	table { border-collapse: collapse;}
+	
+	td{ width : 200px;
+		height: 50px; 
+		text-align: center;}	
+
+
+</style>
+
+</head>
+<body>
+
+
+	<div class="box">  
+	
+		기본 필터 - 선택자:필터 (이런 형태임)<br>
+		: first , :last, :even, :odd, :eq(index), :gt(index), :lt(index)<br>
+		index 는 0 부터 시작 <br><br>
+		
+		
+	
+		<input type="button" value="확인" id="btn1">
+		<br><br>
+		
+		<div id="result1"> 
+		
+			 <ul>
+				<li> one </li>
+				<li> two </li>
+				<li>  three </li>
+				<li> four </li>
+				<li> five </li>
+				<li> six</li>
+				<li> seven</li>
+				<li>eight</li>
+				<li>nine</li>
+			 </ul>
+		
+
+		</div>
+	
+	</div>
+	
+	
+	<div class="box">  
+	
+		기본 필터 - 선택자:필터 <br>
+		:even - 짝수 0, 2, 4, 6, 8 <br>
+		:odd  - 홀수 1, 3, 5, 7
+		<br><br>
+		
+		
+	
+		<input type="button" value="확인" id="btn2">
+		<br><br>
+		
+		<div id="result2"> 
+		
+			<table border="1">
+			
+				<tr>
+					<td>one</td>
+					<td></td>
+				</tr>
+			
+			
+				<tr>
+					<td>two</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>three</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>four</td>
+					<td></td>
+				</tr>
+				
+
+				<tr>
+					<td>five</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>six</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>seven</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>eight</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>nine</td>
+					<td></td>
+				</tr>				
+				
+				
+				<tr>
+					<td>ten</td>
+					<td></td>
+				</tr>			
+			
+			</table>
+		
+		
+		
+		</div>
+	
+	</div>
+	
+	
+	
+
+<div class="box">  
+	
+		기본 필터 - 선택자:필터 <br>
+		:even - 짝수 0, 2, 4, 6, 8 <br>
+		:odd  - 홀수 1, 3, 5, 7
+		<br><br>
+		
+		
+	
+		<input type="button" value="확인" id="btn3">
+		<br><br>
+		
+		<div id="result3"> 
+		
+			<table border="1">
+			
+			
+				<tr>
+					<td>이름</td>
+					<td>전화번호</td>
+				</tr>
+			
+			
+				<tr>
+					<td>one</td>
+					<td></td>
+				</tr>
+			
+			
+				<tr>
+					<td>two</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>three</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>four</td>
+					<td></td>
+				</tr>
+				
+
+				<tr>
+					<td>five</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>six</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>seven</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>eight</td>
+					<td></td>
+				</tr>
+				
+				
+				<tr>
+					<td>nine</td>
+					<td></td>
+				</tr>				
+				
+				
+				<tr>
+					<td>ten</td>
+					<td></td>
+				</tr>			
+			
+			</table>
+		
+		
+		
+		</div>
+	
+	</div>
+	
+</body>
+</html>

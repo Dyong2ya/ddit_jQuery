@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+  <script>  
+  function proc1() {
+	    var now = new Date();
+	 	var now2 = now.toLocaleString();
+		var now3 = now.toLocaleDateString();
+	    var now4 = now.toLocaleTimeString();
+		
+	    //출력장소 : div에 접근검색하게 만들고 싶어
+	    var vd = document.getElementsByTagName('div')[0]/*배열*/
+	    
+	    /*  +를 안 쓰게 되면  누적이 돼.
+	    //출력 - innerHTML - 태그<>가 있을 때, textContent - 태그<>가 없을 때																		value-선택이나 입력받을 때
+	    vd.innerHTML = "new Date() => " + now + "<br>";
+	    vd.innerHTML += "now.toLocaleString() => " + now2 + "<br>";  
+	    vd.innerHTML += "now.toLocaleDateString() => " + now3 + "<br>";
+	    vd.innerHTML += "now.toLocaleTimeString() => " + now4;
+	    */
+	    
+	    
+	    var str = "new Date() => " + now + "<br>";
+	    str += "now.toLocaleString() => " + now2 + "<br>"; 
+	    str += "now.toLocaleDateString() => " + now3 + "<br>";
+	    str += "now.toLocaleTimeString() => " + now4;
+	    
+	    vd.innerHTML = str;
+	    
+	    
+	   /* document.write("new Date() => " + now + "<br>");
+	    document.write("now.toLocaleString() => " + now2 + "<br>");
+	    document.write("now.toLocaleDateString() => " + now3 + "<br>");
+	    document.write("now.toLocaleTimeString() => " + now4);
+	    */
+}
+  </script>
+  
+  <style>
+  div{   /*정적인 스타일이야*/
+    width : 550px;
+    height: 150px;
+    border : 3px solid orange;
+    
+    margin : 20px;
+    padding : 20px;
+  }
+  </style>
+</head>
+<body>
+<pre>
+ . script에서 html요소에 접근 검색
+ 	document.getElementsByTagName('tag이름')
+	document.getElementsByClassName('class이름')
+  	document.getElementById('id이름') -- id는 하나밖에 없어서 element 단수로 쓴다.
+ 
+ . 검색된 html요소에 출력
+ 	innerHTML : 출력내용에 html태그가 포함. 없어도 무관함
+ 	textContent : 출력내용에 html태그가 포함되지 않을 경우
+ 	value : 입력하거나 선택의 경우 -> input type=text | input type=password | type=radio | type=checkbox | select-option | textarea
+</pre>
+  <input type="button" value="확인" onclick="proc1()">
+  <br>
+  <br>
+  <img src="../images/단풍.jpg" alt="단풍.jpg">
+  <br>
+  <div></div>
+</body>
+</html>

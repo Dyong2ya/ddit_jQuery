@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+ //circle 객체 정의
+ var circle = {
+	 //속성
+     rad : 10,
+     //메서드
+     getCircle : function() {
+		return this.rad * this.rad * 3.14;
+	}
+ }
+ function proc1() {
+	//객체 출력
+	print("#result1")
+}
+ 
+ function proc2() {
+	//반지름 입력하여 대입
+	circle.rad = prompt("반지름의 길이를 입력하세요");
+	
+	print('#result2')
+}
+ 
+ function print(out) {
+	str = "반지름 : " + circle.rad + "<br>";
+	str += "원 : " + circle.getCircle() + "<br>"
+	
+	document.querySelector(out).innerHTML = str;
+}
+</script>
+</head>
+<body>
+
+<div class="box">  
+ circle객체<br><br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+
+<div class="box">  
+<br>
+<input type="button" value="확인" onclick="proc2()">
+<br><br>
+<div id="result2"> </div>
+</div>   
+</body>
+</html>

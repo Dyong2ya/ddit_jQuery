@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ div{
+   border : 2px solid blue;
+   margin : 20px;
+   padding : 20px;
+   
+   width : 500px;
+   height : 200px; 
+ }
+ #d2{
+   word-wrap : break-word;
+ }
+  #d3{
+   word-wrap : break-word;
+ }
+</style>
+<script>
+function strAppend() {
+	//alert("sss");
+	
+	//id=d3인 요소를 검색
+	var v3 = document.getElementById('d3');
+	
+	//v3에 대입된 요소에 글자를 추가하시오
+	
+	//글자를 textNode를 이용하여 객체로 생성한다.
+	vh = document.createTextNode("Hello");
+	v3.appendChild(vh);
+}
+
+</script>
+</head>
+<body>
+  <div id="d1">
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  </div>
+  
+  <div id="d2">
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  </div>
+  
+  <div id="d3"></div>
+  버튼을 클릭하면 hello라는 문자를 div에 추가한다
+  <input type="button" value="확인" onclick="strAppend()">
+</body>
+</html>

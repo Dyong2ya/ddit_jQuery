@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+</head>
+
+<script>
+function proc1(){
+      var fruits =["사과", "바나나", "복숭아", 100, 123.567];
+	 //출력
+	 print(fruits, "#result1") /*지역변수라서 받아줘*/
+}
+
+ function print(fr, a) { /*지역변수라서 받아줘, 출력장소가 계속 바뀌니까 a로 받아줘*/
+	//출력장소검색
+	res = document.querySelector(a);
+	
+	//출력
+	res.innerHTML = fr; /*자바에서는 변수가져오면 주소찍히는데 스크립트는 내용이 찍힌다. -- fr고대로 찍히면 ,도 나와*/
+	
+	str = "<br>";
+	for(i=0; i<fr.length; i++){
+		str += fr[i] + " ";
+	}
+	res.innerHTML = str; /*위에도 그냥 =으로 해서 덮어씌워지는거야. 만약에 +=으로 하게 되면 두 개 다 찍히는 거야????????? -- str에 담아서 찍는거라 , 안 나와*/
+}
+ 
+ function proc2() {
+	 
+	 var fruits = new Array("사과", "바나나", "복숭아", 100, 123.567); /*컴파일을 안 해도 알아서 크기가 늘어난다.*/
+	 print(fruits, "#result2");
+}
+ 
+ function proc3() {
+	 
+	 var fruits = new Array();
+	 fruits[0] = "사과";
+	 fruits[1] = "바나나";
+	 fruits[2] = "복숭아";
+	 fruits[3] = "100";
+	 fruits[4] = "123.567";
+	 
+	 print(fruits, "#result3");
+}
+</script>
+<body>
+<div class="box">  
+   배열생성<br>
+   리터럴로 생성<br>
+  var fruits = ["사과", "바나나", "복숭아", 100, 123.567]; <br><br>
+  <input type="button" value="확인" onclick="proc1()">
+  <br><br> 
+<div id="result1"> </div>
+</div>
+
+<div class="box">  
+   배열생성<br>
+   생성자의 인수를 이용해서 생성<br>
+   var fruits = new Array("사과", "바나나", "복숭아", 100, 123.567);<br><br>
+  <input type="button" value="확인" onclick="proc2()">
+  <br><br> 
+<div id="result2"> </div>
+</div>
+
+<div class="box">  
+   배열생성<br>
+   인수없는 생성자를 이용해서 생성<br>
+  	 var fruits = new Array();<br>
+	 fruits[0] = "사과";<br>
+	 fruits[1] = "바나나";<br>
+	 fruits[2] = "복숭아";<br>
+	 fruits[3] = "100";<br>
+	 fruits[4] = "123.567";<br><br>
+  <input type="button" value="확인" onclick="proc3()">
+  <br><br> 
+<div id="result3"> </div>
+</div>
+   
+</body>
+</html>

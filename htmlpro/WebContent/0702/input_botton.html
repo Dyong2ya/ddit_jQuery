@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+  function calc(){
+	  //입력한 값을 가져오기
+	  var vprice = document.getElementById('price').value;
+	  var vsu = document.getElementById('su').value;
+	  
+	  var result = parseInt(vprice) * parseInt(vsu);
+	  
+	  alert(result);
+  }
+</script>
+
+</head>
+<body>
+<pre>
+  &lt;input type="button"> 기능이 없다.
+  
+   기능을 부여하려면 자바스크립트가 필요하다
+  onclick="함수이름()"를 이용하여 함수를 호출한다. 
+  
+ 함수정의 : 
+ function 함수이름() {
+  
+ }
+  자바스크립트에서 form양식에서 입력한 값을 
+ id, class, 태그이름을 이용하여 가져온다 
+ document.getElementById('id이름').value   /*중복불허*/
+ document.getElementsByClassName('class이름').value   /*중복ㅇㅋ*/
+ document.getElementsByTagName('tag이름').value   /*중복ㅇㅋ*/
+ 
+ 가져온 값은 문자로 가져오지만 계산이 필요한 경우에는 숫자로 변경한다. - parseInt()
+</pre>
+  <form action="">
+    가격<input type="text" name="price" id="price"><br>
+    수량<input type="text" name="su" id="su"><br>
+     <input type="button" value="계산" onclick="alert('10000원입니다')"> <!-- value어ㅓㅄ으면 아무 것도 없이 나와 -->
+     <input type="button" value="계산" onclick="calc()"> 
+  </form>
+</body>
+</html>

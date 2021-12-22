@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style>
+  div{
+    border : 1px solid blue;
+    margin : 20px;
+    padding : 20px;
+  }
+  a{
+   /* border : 1px dotted; */
+    font-size : 1.5em;
+    margin : 10px;
+    padding : 10px;
+  }
+  a:link { color : red;}
+  a:visited { color : green;}
+  a:hover { background : pink;}
+  a:active{ font-size : 1.2em; color : blue;}
+  
+  p:hover{ background : green;}
+  p:active{ background : yellow;}
+  
+</style>
+</head>
+<body>
+ <pre>
+   의사코드 : 상태나 구조에 의해서 선택 
+   
+   상태
+   : link -- 처음 a링크가 생겼을 때
+   : visited -- 한 번 방문했을 때
+   : hover -- 마우스를 올려놨을 때
+   : active -- 마우스를 누를 때
+   구조
+   : nth-child(2n) -- 2의 배수, 짝수번 째 자식을 선택
+   : nth-child(3n) -- 3의 배수
+   : nth-child(2n+1) -- 홀수
+   : nth-child(even) -- 짝수
+   : nth-child(odd) --홀수
+   : nth-child(4) -- 4번째 자식을 선택
+ </pre>
+ 
+ <div> 
+   <pre>
+    a:link { color : red;}
+    a:visited { color : green;}
+    a:hover { background : pink;}
+    a:active{ font-size : 1.2em; color : blue;}
+   </pre>
+   <a href="http://www.naver.com">네이버</a>
+   <a href="http://www.daum.net">다음</a>
+   <a href="http://www.w3schools.com">w3schools</a>
+   <a href="http://www.nate.com">네이트</a>
+ </div>
+ 
+ <div>
+   <pre>
+    p:hover{ background : green;}
+    p:active{ background : yellow;}
+   </pre>
+   <p>무궁화 꽃이 피었습니다</p>
+   <p>무지개가 떴습니다</p>
+   <p>우리집 강아지는 복슬강아지</p>
+   <p>햇볕은 쨍쨍 모래알은 반짝</p>
+   <p>태극기가 바람에 펄럭입니다</p>
+ </div>
+</body>
+</html>

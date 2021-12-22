@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+	$('#btn1').on('click', function() {
+		
+		//$('img').attr('title', 'korea');
+		$('img').attr('title', function() {
+			//현재 img요소의 src속성값을 가져온다
+			vimg = $(this).attr('src'); 
+			
+			start = vimg.lastIndexOf('/') + 1; // '/'한 글자 뒤부터가 글자니까 +1
+			end = vimg.lastIndexOf('.');
+
+			//src에서 start와 end의 값을 참조해서 문자열로 추출한다.
+			vtitle = vimg.substring(start, end);
+			
+			return vtitle;
+		})
+	})
+})
+</script>
+<style>
+img{
+    width: 100px;
+    height: 100px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">  
+	버튼을 클릭하면 이미지의 title속성을 부여<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br><br>
+	<div id="result1">
+	    <img src="../images/쭈굴어피치.png" alt="쭈굴어피치.png">
+	    <img src="../images/스티치.png" alt="스티치.png">
+	    <img src="../images/라이언.png" alt="라이언.png">
+	    <img src="../images/스누피.png" alt="스누피.png">
+	</div>
+</div>   
+</body>
+</html>

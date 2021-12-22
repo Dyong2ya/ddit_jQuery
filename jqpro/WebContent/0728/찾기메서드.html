@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	 $('#next').on('click', function() {
+		  $("li.start").next().css({"color": "red", "border": "2px solid red"});
+	  })
+	  
+	 $('#nexta').on('click', function() {
+		  $("li.start").nextAll().css({"color": "blue", "border": "2px solid blue"});
+	  })
+	  
+	 $('#nextu').on('click', function() {
+		  $("li.start").nextUntil('li:last').css({"color": "green", "border": "2px solid green"});  //start부터 시작해서 last사이에 있는 애들 선택
+	  })
+	  
+	 $('#parent').on('click', () => { //function을 람다로 표현한 거 
+		
+		  $('#result2 span').parent().css({"color": "#8B008B", "border": "2px solid #8B008B"})
+	})
+	
+	 $('#parents').on('click', () => { //function을 람다로 표현한 거 
+		
+		  $('#result2 span').parents().css({"color": "yellow", "border": "2px solid yellow"})  <!--box조상이 body라서 전체 다 되는 거야 -->
+	})
+	
+	 $('#pssel').on('click', () => { //function을 람다로 표현한 거 
+		
+		  $('#result2 span').parents('#result2').css({"color": "#000000", "border": "2px solid 	#000000"})  <!--box조상이 body라서 전체 다 되는 거야 -->
+	})
+	
+	 $('#psuntil').on('click', () => { //function을 람다로 표현한 거 
+		
+		  $('#result2 span').parentsUntil('#result2').css({"color": "cyan", "border": "2px solid cyan"})  <!--box조상이 body라서 전체 다 되는 거야 -->
+	})
+	
+	$('.find').on('click', function() {
+		
+		$(this).parents('ul').find('span').css('color', '#FF4500');
+	})
+});
+</script>
+<style>
+.siblings * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">  
+	<br><br>
+	<input type="button" value="next" id="next">
+	<input type="button" value="nextall" id="nexta">
+	<input type="button" value="nextuntil" id="nextu">
+	<br><br>
+	<div id="result1">
+	  <div style="width:500px;" class="siblings">
+	 	<ul>ul (parent)  
+	      <li>li (sibling)</li>
+	      <li>li (sibling)</li>
+	      <li class="start">li (sibling with class name "start")</li>
+	      <li>li (the next sibling of li with class name "start")</li>
+	      <li>li (sibling)</li>
+	      <li>li (sibling)</li>
+	      <li>li (sibling)</li>
+	    </ul>   
+	  </div>
+	</div>
+</div>   
+
+<div class="box">  
+	<br><br>
+	<input type="button" value="parent" id="parent">
+	<input type="button" value="parents" id="parents">
+	<input type="button" value="parents_sel" id="pssel">
+	<input type="button" value="parentsuntil" id="psuntil">
+	<br><br>
+	<div id="result2">
+	  <div style="width:500px;" class="siblings">
+		<div style="width:500px;">div (great-grandparent)
+          <ul>ul (grandparent)  
+            <li>li (direct parent)
+              <span>span</span>
+            </li>
+          </ul>   
+        </div>
+	  </div>
+	</div>
+</div>   
+
+<div class="box">  
+	<br><br>
+	<div id="result3">
+	  <div style="width:500px;" class="siblings">
+		<div style="width:500px;">div (great-grandparent)
+          <ul>ul (grandparent)  
+            <li>li (direct parent)
+              <span>span</span>
+              <input type="button" value="find" class="find">
+            </li>
+          </ul>   
+        </div>
+	  </div>
+	</div>
+	
+	<div id="result4">
+	  <div style="width:500px;" class="siblings">
+		<div style="width:500px;">div (great-grandparent)
+          <ul>ul (grandparent)  
+            <li>li (direct parent)
+              <span>span</span>
+              <input type="button" value="find" class="find">
+            </li>
+          </ul>   
+        </div>
+	  </div>
+	</div>
+</div>   
+</body>
+</html>

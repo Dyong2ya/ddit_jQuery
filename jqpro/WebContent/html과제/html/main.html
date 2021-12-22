@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/css.css">
+<title>Web Shopping</title>
+</head>
+<body>
+    <header>
+        <img src="../images/쇼핑.png">
+        <h1><a href="main.html">Web Shopping</a></h1>
+    </header>
+    <nav id="nav">
+        <div id="navmenu">
+            <ul>
+                <li><a href="main.html">HOME</a></li>
+                <li><a href="main.html">SHOPPING</a></li>
+                <li><a href="main.html">ABOUT</a></li>
+                <li><a href="main.html">NEWS</a></li>
+                <li><a href="main.html">MY ACCOUNT</a></li>
+                <li><a href="main.html">CONTACTS</a></li>
+            </ul>
+        </div>
+    </nav>
+    <aside id="left">
+        <ul>
+            <li><a href="computer.html" target="ifr">컴퓨터</a></li>
+            <li><a href="clothing.html" target="ifr">의류</a></li>
+            <li><a href="음악.html" target="ifr">음악</a></li>
+            <li><a href="영화.html" target="ifr">영화</a></li>
+            <li><a href="스포츠레저.html" target="ifr">스포츠/레저</a></li>
+            <li><a href="가구.html" target="ifr">가구/인테리어</a></li>
+            <li><a href="식품.html" target="ifr">식품</a></li>
+        </ul>
+    </aside>
+    <section id="main">
+            <iframe src="computer.html" name="ifr" scrolling="no"></iframe>
+    </section>
+    <div id="right">
+        <h2>Shopping<br> Cart</h2>
+        <p>현재 쇼핑카트에 물품이 없습니다.</p>
+        <a href="쇼핑카트.html" target="ifr">쇼핑카트_보기</a>
+        <h2>Log In</h2>
+        <label for="id">아이디</label><br>
+        <input type="text" name="id" id="id"><br>
+        <label for="password">패스워드</label><br>
+        <input type="text" name="password" id="password"><br><br>
+        <input type="button" value="로그인">
+        <input type="reset" value="초기화">
+        <br><br>
+        <a href="회원가입.html" target="ifr">회원가입</a> 
+        <a href="">비밀번호 분실</a>  
+    </div>
+    <footer>Copyright(c)2021 Dyong</footer>
+</body>
+</html>

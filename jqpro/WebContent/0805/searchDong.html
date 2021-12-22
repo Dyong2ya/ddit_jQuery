@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+<style>
+.ziptr:hover{
+	background: yellow;
+}
+</style>
+
+<script>
+$(function() {
+	$('input:button').on('click', function() { //input이 2개여서
+		
+		//입력한 값 가져온다
+		dongvalue = $('#dong').val();
+		
+		//서버로 보내기
+		$.ajax({
+			url : '/SearchDong.do', //'/'가 없으면 0805에서 찾게 돼
+			data : {'dong' : dongvalue},
+			method : 'post',
+			dataType : 'json',
+			
+			success : function(res) {
+
+				str = "<table  class='container' border='1'>";
+				str += "<tr>";
+				str += "<td>우편번호</td><td>주소</td><td>번지</td>";
+				str += "</tr>;"
+				
+				$.each(res, function(i, v) {
+					str += "<tr class='ziptr'>";
+					str += "<td>" + v.zipcode + "</td><td>" + v.addr + "</td>";
+					str += "<td>" + v.bunji + "</td>";
+					str += "</tr>";
+				})
+				
+				str += "</table>"
+				$('#result1').html(str);
+			},
+			
+			error : function(xhr) {
+				alert("상태 : " + xhr.status)
+			}
+			
+		})
+	})
+	
+	//우편번호 결과 테이블에서 원하는 행을 클릭
+	$(document).on('click', '.ziptr', function() { //맨 앞의 가로엔 document나 ziptr의 부모(result1)가 온다.
+		zip = $('td:eq(0)', this).text(); //선택한 걸 this로 받아서 ziptr을 의미한다.
+		addr = $('td:eq(1)', this).text(); 
+		
+		$('#zip', opener.document).val(zip);
+		$('#add1', opener.document).val(addr);
+
+		window.close();
+		
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">  
+    <br><br>
+   	찾는 동 이름을 입력하세요<br><br>
+    <input type="text" id="dong">
+    <input type="button" value="확인">
+    <br><br>
+    <div id="result1"></div>
+</div>   
+</body>
+</html>

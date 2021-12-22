@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+<script>
+$(function() {
+	$('input:button').on('click', function() {
+		$.ajax({
+			url : '/MemberList.do', // controller에 MemberList //// 이거 path설정에서 바꾸면 됑. 서버에서  modules에서 path edit
+			method : 'get',
+			success : function(res) {
+				str = "<table  class='container' border='1'>";
+				str += "<tr>";
+				str += "<td>아이디</td><td>이름</td><td>주소</td>";
+				str += "<td>전화번호</td><td>이메일</td><td>생일</td>";
+				str += "</tr>;"
+				
+				$.each(res, function(i, v) { //json데이터의 키콜론밸류 key값 ㄴ거기서 따오는 거야
+					str += "<tr>";
+					str += "<td>" + v.id + "</td><td>" + v.name + "</td>";
+					str += "<td>" + v.addr1 + "</td>";
+					str += "<td>" + v.hp + "</td><td>" + v.email + "</td>";
+					str += "<td>" + v.bir + "</td>";
+					str += "</tr>";
+				})
+				str += "</table>";
+				
+				$('#result1').html(str);
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">  
+    MemberList<br><br>
+    <input type="button" value="확인">
+    <br><br>
+    <div id="result1"></div>
+</div>   
+</body>
+</html>

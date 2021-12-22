@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+		
+		$('#btn1').on('click', function() {
+			
+			$('#result1 form *:disabled').css('border', '2px solid olive'); // form 태그 중에서 disabled 인것 만 테두리 주기
+			$('#result2 form *:enabled').css('border', '2px solid orange');
+
+		})
+		
+		
+		$('#btn2').on('click', function() {
+			
+			// $('#result2 form input[type=checkbox]:checked')
+			
+			// 이렇게 쓰면 check에 하나만 들어감 
+			// check = $('#result2 form :checkbox(i):checked').val()
+			
+			check = "";
+			// 반복문
+			// checked 되어있는 것들만 도는거임 !! 
+			$.each($('#result2 form :checkbox:checked'),function() {
+				
+				// this : 현재 반복 루트를 돌고있는 i번째
+				check += $(this).val() + " "; // value 없으면 받을 수 없음
+				
+				
+			})
+			
+			
+			alert("취미는 " + check + " 입니다!");
+		})
+		
+		
+		
+		$('#spring').on('change', function() {
+			
+			str = "";
+			// 반복문
+			// $.each($('#spring option:selected'), function() {
+			$.each($('option:selected', this), function() {
+				
+				// this : 현재 반복 루트를 돌고있는 i번째
+				str += $(this).val() + " "; // value 없으면 받을 수 없음
+			
+			} )
+	
+				alert(str);
+		})
+		
+	})
+	
+	
+
+</script>
+
+</head>
+<body>
+
+
+	<div class="box">  
+	
+		form 상태 필터 <br><br>
+		
+		
+	
+		<input type="button" value="확인" id="btn1">
+		<br><br>
+		
+		<div id="result1"> 
+		
+			<form> 
+				<input type="text" name="id" ><br>
+				<input type="password" name="pass"><br>
+				
+				<select name="disSelect"> <!-- disabled : 하면 옵션 선택이 안됨! -->
+				      <option>Option1</option>
+				      <option>Option2</option>
+				      <option>Option3</option>
+				      <option>Option4</option>
+				</select>
+				
+				<br><br>
+				
+				<textarea name="enTextarea" rows=10 cols=20 >text</textarea><br>
+				<input type="button" value="확인" onclick="alert('hello ~~')"> <br>
+				
+			</form>
+			
+		</div>
+	
+	</div>
+	
+	
+	
+	<div class="box">  
+	
+		form 상태 필터 <br><br>
+
+		
+		<div id="result2"> 
+			
+			<!-- onsubmit = return false => submit을 클릭해도 아무일 없음 -->
+			<form>
+				취 미 :
+				 <input type="checkbox" name="hobby" value="여행" checked >여행 <!-- checked : 기본값이 check 로 되어있는거임 -->
+				<input type="checkbox" name="hobby" value="장기">장기
+				<input type="checkbox" name="hobby" value="바둑">바둑
+				<input type="checkbox" name="hobby" value="독서" >독서
+				<input type="checkbox" name="hobby" value="낚시">낚시<br><br>
+				<!-- server로 보내기, 
+					1. input type=submit, form action="" method=""
+					2. script로 보내기 -->
+				<input type="button" value="전송" id="btn2">
+			</form>
+
+		</div>
+	
+	</div>
+	
+	
+	
+	<div class="box">  
+	
+		form 상태 필터 <br><br>
+		
+		<!--  <input type="button" value="확인" id="btn1">
+		<br><br>  -->
+
+		
+		<div id="result3"> 
+		
+			<form>
+				봄소식 : 
+				<select name="spring" id="spring" multiple size="6"> 
+				<!-- multiple : 여러개를 선택하는 속성,
+				  	 size : 화면에 보여주는 갯수 (원래 하나밖에 안보여주는데 6개 보여주는거임 (위 옵션과 비교해봐))-->
+					<option>개나리</option> <!-- select option 에서는 value 없으면 텍스트 넘어감 -->
+					<option selected>진달래</option>
+					<option>민들레</option>
+					<option selected>벚꽃</option>
+					<option>목련</option>
+					<option>철쭉</option>
+				</select>
+			</form>
+
+		</div>
+	
+	</div>
+</body>
+</html>

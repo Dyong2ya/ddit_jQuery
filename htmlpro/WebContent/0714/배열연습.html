@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+	arr = new Array();
+
+	function proc1() {
+
+		while (true) {
+
+			a = prompt("이름 입력");
+			if (a == null || a == "")// (취소 || 공백하고 확인)
+				break;
+			arr.push(a)
+		}
+
+		document.querySelector('#result1').innerHTML = arr;
+	}
+
+	function proc2() {
+		// 배열 초기화
+		arr = [];
+		for (var i = 0; i < 5; i++) {
+			let flag = true;
+			const num = prompt("정수 입력", "");
+			// 같은 값이 있는지 판단한다.
+			for (var j = 0; j < arr.length; j++) {
+				// 같은 값이 있으면 flag 변수의 값을 false로 변경한다.
+				if (num === arr[j]) {
+					flag = false;
+					break;
+				}
+			}
+			// flag 값이 false는 같은 값이 있다는 뜻이기 때문에 배열에 추가하지 않고 i를 - 시키고 넘긴다.
+			if (flag === false) {
+				window.alert('중복된 값입니다. 다른 정수를 입력하세요. 현재 배열 값 -> ' + arr);
+				i--;
+				continue;
+			}
+
+			arr.push(num);
+		}
+		document.querySelector('#result2').innerHTML = arr;
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<div class="box">
+		사람 이름을 계속 입력 받아 배열에 저장하고 그저장된 이름을 출력하는 프로그램을 작성 <br>
+		입력의 마지막은 공백문자를 입력하거나 "취소" 버튼을 눌렀을 때로 한다.<br>
+		"취소" 버튼은 null이 입력될 때이다.<br><br> <input type="button" value="확인"
+			onclick="proc1()"> <br> <br>
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		서로 중복되지 않은 정수 5개를 입력받아 출력하는 프로그램을 작성 <br> <br> <input
+			type="button" value="확인" onclick="proc2()"> <br> <br>
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

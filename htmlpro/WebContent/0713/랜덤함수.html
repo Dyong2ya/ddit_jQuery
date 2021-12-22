@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+function proc1() {
+	////랜덤수 5개 발생 - 배열에 저장 
+	var su = new Array();
+	
+	for(i=0; i<5; i++){
+		rand = parseInt(Math.random()*100 + 1);
+		su[i] = rand;
+	}
+	
+	//출력장소검색
+	document.querySelector('#result1').innerHTML = su; //su는 배열 result1이 div에 있어서 innerHTML
+	//document.querySelector('#result1').innerHTML += su + "<br>"; //이렇게 하면 찍히는 거 다 찍혀
+}
+</script>
+</head>
+<body>
+
+<div class="box">  
+  랜덤수(1~100)구해서 출력<br><br>
+  <input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="result1"> </div>
+</div>   
+</body>
+</html>

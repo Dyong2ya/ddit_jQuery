@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+<script>
+$(function() {
+	$('#send').on('click', function() {
+		//입력한 id, pass를 가져온다  -- data : $('form').serialize() 밑에서 이거 쓰게 되면 필요없어
+		inId = $('#id').val();
+		inPass = $('#pass').val();
+		
+		sendData = "id=" + inId + "&pass=" + inPass;
+		
+		//서버로 전송 및 입력
+		$.ajax({
+			url : '../0729/aaa.jsp',
+			type : 'post',
+			//data : $('form').serialize(),
+			data : sendData,
+			success : function(res) {
+				$('#result2 div').html(res);
+			},
+			error : function(xhr) {
+				alert("status 상태 : " + xhr.status);
+			},
+			dataType : 'html'
+			
+		})
+	})
+
+	$('#btn1').on('click', function() {
+		str="";
+		$.ajax({
+			url : '../0729/as_get.jsp',
+			type : 'get',
+			success : function(a) { //성공한 결과를 담는 변수 a
+				str += "<table border='1'>";
+				str += "<tr><td>이름</td>";
+				str += "<td>" + a.name + "</td></tr>";
+				
+				str += "<tr><td>전화번호</td>";
+				str += "<td>" + a.tel + "</td></tr>";
+				
+				str += "<tr><td>주소</td>";
+				str += "<td>" + a.addr + "</td></tr>";
+				str += "</table>";
+				
+				$('#result3 div').html(str);
+
+			},
+			error : function(k) { //실패한 결과를 담는 변수 a 이건 XMLHttpRequest이 타입이지. 가장 기본이잖아
+				alert("상태 : " + k.status)
+			},
+			dataType : 'json' //성공한 결과의 타입
+			
+		})
+	})
+})
+
+</script>
+</head>
+<body>
+
+<div class="box">  
+기존의 동기방식으로 요청하고 응답한다<br>
+응답페이지는 새로운 페이지로 생성된다
+<br><br>
+	<div id="result1">
+	  <form action="../0729/aaa.jsp" method="post"> <!-- 0729폴더에 aaa있어 -->
+	        아이디 : <input type="text" name="id"><br>
+	        비밀번호 : <input type="password" name="pass"><br>
+	    <input type="submit" value="전송">
+	  </form>
+	</div>
+</div> 
+
+<div class="box">  
+    비동기를 이용해서 서버로 보내기<br>
+  jQuery ajax를 이용
+ <br><br>
+	<div id="result2">
+	  <form> 
+	        아이디 : <input type="text" id="id" name="id"><br>
+	        비밀번호 : <input type="password" id="pass" name="pass"><br>
+	    <input type="button" value="전송" id="send">
+	  </form>
+	  
+	  <div></div>
+
+	</div>
+</div>   
+
+<div class="box">  
+    비동기를 이용해서 서버로 보내기<br>
+ 
+    <input type="button" value="확인" id="btn1">
+	<div id="result3">
+	<br><br>	 
+	 
+	  <div></div>
+	  
+	</div>
+</div>   
+</body>
+</html>
